@@ -9,9 +9,12 @@ from credentials import *
 s = requests.Session()
 bin_list = []
 os.popen('mkdir videos/{}'.format(argv[1]))
+EGGHEAD = 'https://egghead.io/'
 
 
 def login():
+    global page
+    page = 1
     r = s.post('https://egghead.io/users/sign_in', data=DATA, headers=headers)
 
 
@@ -24,26 +27,38 @@ def parse_bin(content, key):
 
 
 def build_list():
+    global page
     SSL_WISTIA = 'https://embed-ssl.wistia.com/deliveries/'
     WISTIA = 'http://embed.wistia.com/deliveries/'
-    r = s.get('https://egghead.io/technologies/{}'.format(argv[1]))
-    tree = html.fromstring(r.text)
-    items = tree.xpath('//a[@class=""]')
-    for item in range(0, len(items)):
-        for i in items[item].items():
-            if 'https://egg' in i[1]:
-                course_name = i[1].split('lessons/')[1]
-                t = s.get(i[1])
-                try:
-                    file = t.text.split(WISTIA)[1].split('" />')[0]
-                    bin_key = '{}{}'.format(WISTIA, file)
-                    download_bin(bin_key, course_name)
-                except IndexError:
-                    ssl_bin = t.text.split(SSL_WISTIA)[1].split('" />')[0]
-                    bin_key = '{}{}'.format(SSL_WISTIA, ssl_bin)
-                    download_bin(bin_key, course_name)
-                    print(i)
-                    item += 1
+
+    tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
+                                                             argv[1], page)
+    r = s.get(tech_url)
+    page_amount = r.text.split('<p class="subtitle"><i>showing All ')[
+        1].split(' ')[0]
+    total_pages = int(page_amount) / 50
+    for page in range(0, total_pages):
+        tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
+                                                                 argv[1], page)
+        r = s.get(tech_url)
+        tree = html.fromstring(r.text)
+        items = tree.xpath('//a[@class=""]')
+        for item in range(0, len(items)):
+            for i in items[item].items():
+                print(i)
+                if 'https://egg' in i[1]:
+                    t = s.get(i[1])
+                    course_name = i[1].split('lessons/')[1]
+                    try:
+                        content_url = t.text.split('itemprop="contentURL"')[
+                            1].split('content="')[1].split('" />')[0]
+                        bin_key = '{}{}'.format(WISTIA, content_url)
+                        download_bin(bin_key, course_name)
+                    except IndexError:
+                        content_url = t.text.split('itemprop="contentURL"')[
+                            1].split('content="')[1].split('" />')[0]
+                        bin_key = '{}{}'.format(SSL_WISTIA, content_url)
+                        download_bin(bin_key, course_name)
 
 
 def download_bin(bin, course_name):

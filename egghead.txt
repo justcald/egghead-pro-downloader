@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"92765cace1","applicationID":"3539411","transactionName":"JldeQUdaDw1WRU4KBxZLX1tGGhAJXEA=","queueTime":1,"applicationTime":280,"ttGuid":"","agentToken":null,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgAAWFRaGwAFV1hWBgA="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,(new Date).getTime(),!0])}catch(s){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(14)(a),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=s(n,"nr@wrapped",function(){return c(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&c.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(14)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(14)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",c)}function i(t){y.push(t),h&&(w=-w,x.data=w)}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(14)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,g),g.prototype=p.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var w=1,x=document.createTextNode(w);new h(a).observe(x,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],c])}f(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],c),l}finally{f(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<n.length;s++)c=n[s],a=t[c],r(a)||(t[c]=e(a,f?c+o:o,i,c))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),c=a.length,s=0;s<c;s++)a[s].apply(i,r);var u=f[v[n]];return u&&u.push([y,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){s(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},y={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return y}function i(){return new r}var a="nr@context",c=t("gos"),s=t(12),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!w++){var t=g.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(v,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;g.proto=n?"https://":"http://",c("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=g.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){c("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var c=t("handle"),s=t(12),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(9);var m=""+location,v={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},y=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:a(),origin:m,features:{},xhrWrappable:y};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),c("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader",2,7]);</script>
+
+  <title>Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free @eggheadio</title>
+  <link rel="shortcut icon" href="/favicon.ico?v=2" />
+
+  <link rel="apple-touch-icon" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-57x57-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-72x72-849fa4fbea059f853924bf41684eef7f.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-114x114-e7e7594ee2a8bdc39641de944b388e72.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-144x144-8910c2294eab00b4ca5769d2c0e6b3ea.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-60x60-f13f194d784242cf7acbce5f2d3c216c.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-120x120-2de8da13b42db7df9a7b753390ceabc0.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-76x76-4eeb7c262c977c89d1d43e93463c18a1.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-152x152-ae1d4a7323a1c5ecd9d970e36a4b91ec.png" />
+  <meta name="application-name" content="egghead.io"/>
+  <meta name="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <script src="//d1xwtr0qwr70yv.cloudfront.net/assets/application-3a8471caec9df5c6a1aa9f7ba70f7790.js"></script>
+  <!--<script src="//cdn.optimizely.com/js/857661637.js"></script>-->
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="bLQLEwzSdQBUkVjKDEPV+Mdl+Ena02Nf1DfVLxSfRMM=" name="csrf-token" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta property="og:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." >
+  <meta property="og:image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png" >
+  <meta property="og:title" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free" >
+
+  <meta property="og:type" content="website" >
+  <link href="/feed" rel="alternate" title="RSS" type="application/rss+xml" />
+
+  <link href="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" rel="canonical" />
+
+      <meta name="twitter:card" content="product">
+
+<meta name="twitter:site" content="@eggheadio" />
+<meta name="twitter:creator" content="@@nodebotanist">
+<meta name="twitter:title" content="node Lesson: Creating JWTs (JSON Web Tokens) in Node" />
+<meta name="twitter:url" content="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" />
+<meta name="twitter:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." />
+<meta name="twitter:image" content="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-introduction-to-json-web-tokens/egghead-introduction-to-json-web-tokens.jpg" />
+
+  <script language="javascript" type="text/javascript">
+    try {
+      var raw_playlists = "{\"playlists\":[{\"id\":13287,\"title\":\"Watch Later\",\"description\":null,\"slug\":\"watch-later-dd4e55947955f2c8\",\"published\":null,\"updated_at\":\"2016-01-04T16:56:38.450-06:00\",\"created_at\":\"2015-07-17T01:05:47.249-05:00\",\"technology_id\":null,\"playlist_url\":\"https://egghead.io/api/v1/playlists/watch-later-dd4e55947955f2c8\",\"is_watch_later\":true,\"playlist_http_url\":\"https://egghead.io/playlists/watch-later-dd4e55947955f2c8\",\"new_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/new\",\"edit_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/watch-later-dd4e55947955f2c8\",\"lessons\":[{\"id\":175}]}]}";
+      window.playlists = JSON.parse(raw_playlists).playlists;
+    } catch (e) {
+
+    }
+  </script>
+
+
+
+  <link href="//d1xwtr0qwr70yv.cloudfront.net/assets/application-fc198c8dabe3a741caa3f60504324171.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 8]>
+    <link href="//d1xwtr0qwr70yv.cloudfront.net/stylesheets/font-awesome-ie7.min.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+  <!--Typekit-->
+  <script type="text/javascript" src="//use.typekit.net/vdt8itv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+
+
+  <script>
+
+    window.docCookies = {
+      getItem: function (sKey) {
+        if (!sKey) { return null; }
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+      },
+      setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+        var sExpires = "";
+        if (vEnd) {
+          switch (vEnd.constructor) {
+            case Number:
+              sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+              break;
+            case String:
+              sExpires = "; expires=" + vEnd;
+              break;
+            case Date:
+              sExpires = "; expires=" + vEnd.toUTCString();
+              break;
+          }
+        }
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+        return true;
+      },
+      removeItem: function (sKey, sPath, sDomain) {
+        if (!this.hasItem(sKey)) { return false; }
+        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+        return true;
+      },
+      hasItem: function (sKey) {
+        if (!sKey) { return false; }
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+      },
+      keys: function () {
+        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+        return aKeys;
+      }
+    };
+
+     window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+
+    window.identify = function() {
+      $.get('/current_user').then(function(options) {
+        if(options.id) {
+          analytics.identify(options.id, options);
+          if(mixpanel) {
+            mixpanel.identify(options.email);
+            mixpanel.people.set(_.merge({}, options, {
+              "$first_name": options.name,
+              "$created": options.created_at,
+              "$email": options.email
+            }));
+          }
+        } else {
+          analytics.identify();
+        }
+      });
+    }
+  </script>
+
+  <!-- Start Visual Website Optimizer Asynchronous Code -->
+  <script type='text/javascript'>
+    var _vwo_code=(function(){
+      var account_id=48528,
+          settings_tolerance=2000,
+          library_tolerance=2500,
+          use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+          f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+  </script>
+  <!-- End Visual Website Optimizer Asynchronous Code -->
+</head>
+
+<body itemscope itemtype="http://schema.org/Article">
+
+  <meta itemprop="name" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial"/>
+  <meta itemprop="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <meta itemprop="image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png">
+
+  <header>
+  <nav role="navigation" class="navbar header-navigation-holder">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button data-target="#header-navigation" data-toggle="collapse" class="navbar-toggle header-navigation-toggle"
+                type="button">
+          <i class="icon-reorder"></i>
+        </button>
+        <a href="/" class="navbar-brand logo">
+          <img alt="Logo with text" class="img-responsive hidden-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-with-text-eb7046b6c5f1e2078fe6e036a790f9c4.svg" />
+          <img alt="Logo mobile" class="img-responsive hidden-xs visible-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-mobile-316af2740086b0efd4e28d41a3669015.svg" />
+        </a>
+      </div>
+
+      <div id="header-navigation" class="collapse navbar-collapse header-navigation">
+        <ul class="nav navbar-nav header-navigation-list">
+
+          <li class=""><a href="/lessons">Browse</a></li>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><a href="/playlists">Playlists</a></li>
+
+
+
+          <li class=""><a href="/angularjs-enterprise-training-workshop">On-Site Training</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right header-navigation-list">
+
+
+
+
+
+
+
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Justin  <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+
+                <li><a href="/users/46992">User</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li class="divider"></li>
+                <li><a href="/watch_later">Watch Later</a></li>
+                <li class="divider"></li>
+                <li><a class="btn-nav btn-nav-secondary" data-method="delete" href="/users/sign_out" rel="nofollow">Logout</a></li>
+              </ul>
+
+            </li>
+          <li class="hidden-xs full-height">
+
+              <a href="/membership" class="custom-label custom-label-red"><strong>PRO</strong></a>
+              <a href="/users/46992" class="userpic-holder">
+                <img alt="Justin" class="userpic" height="30" src="https://secure.gravatar.com/avatar/cc8020c4168ef3b05aa1d191d2b5a232?default=identicon&secure=true&size=30" width="30" />
+              </a>
+
+            </li>
+              <li class="half-height egghead-search-input-container">
+               <div data-react-class="EggheadSearchComponent" data-react-props="{}"></div>
+            </li>
+
+        </ul>
+      </div>
+      <!--header-navigation-->
+    </div>
+    <!--container-fluid-->
+  </nav>
+  <!-- header-navigation-holder -->
+</header>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+//    window.identify();
+
+
+  })
+</script>
+
+
+<div ng-app="egghead-lesson" ng-controller="AppCtrl as app">
+<div  ng-controller="LessonViewCtrl">
+
+
+<section class="hero" >
+  <div class="lesson-video-container"  ng-controller="PlaylistCtrl as playlist">
+    <div ng-cloak>
+      <div class="lesson-with-playlist-holder">
+        <div ng-class="{'lesson-frame-column': !playlist.theaterMode, 'lesson-frame-column-theater': playlist.theaterMode}">
+          <div class="lessons-frame-holder">
+      <script>
+        window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+      </script>
+  <div class="lessons-frame">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+<div id="wistia_79gl8k554u" class="wistia_embed" style="width:100%;height:100%;"><div itemprop="video" itemscope itemtype="http://schema.org/VideoObject"><meta itemprop="name" content="egghead-introduction-to-json-web-tokens.mp4" /><meta itemprop="duration" content="PT4M53S" /><meta itemprop="thumbnailUrl" content="https://embed-ssl.wistia.com/deliveries/6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin" /><meta itemprop="contentURL" content="http://embed.wistia.com/deliveries/2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="embedURL" content="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27&controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="uploadDate" content="2016-06-28T16:02:54Z" /><object id="wistia_79gl8k554u_seo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="display:block;height:720px;position:relative;width:1280px;"><param name="movie" value="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27"></param><param name="allowfullscreen" value="true"></param><param name="bgcolor" value="#000000"></param><param name="wmode" value="opaque"></param><param name="flashvars" value="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin"></param><embed src="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27" allowfullscreen="true" bgcolor=#000000 flashvars="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" name="wistia_79gl8k554u_html" style="display:block;height:100%;position:relative;width:100%;" type="application/x-shockwave-flash" wmode="opaque"></embed></object><noscript itemprop="description">egghead-introduction-to-json-web-tokens.mp4</noscript></div></div>
+</div></div>
+<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js"></script>
+<script>
+wistiaEmbed = Wistia.embed("79gl8k554u", {
+  videoFoam: true,
+  playerPreference: "html5"
+});
+</script>
+<script charset="ISO-8859-1" src="//fast.wistia.com/embed/medias/79gl8k554u/metadata.js"></script>
+
+
+  </div>
+</div><!-- lessons-frame-holder -->
+          
+<div class="lesson-action-holder" ng-cloak>
+  <div class="buttons-holder" ng-controller="DownloadTrackerController">
+    <div class="lesson-controls-container">
+
+      <a id="playbackSpeed"
+         class="custom-btn square-btn-grey replay-speed-btn hidden-xs"
+         ng-click="speedChange.cycleSpeed()"
+         ng-controller="SpeedChangeController as speedChange">
+        <i class="icon-double-angle-right"></i>
+        {{speedChange.playbackSpeed}}x
+      </a>
+      <a id="14b4e74b561f03"
+         class="custom-btn"
+         ng-click="onDownload(969,293, $event)">
+        <i class="fa fa-download"></i>
+        <span class="hidden-xs">
+          Download <span class="hidden-md">in HD</span>
+        </span>
+      </a>
+
+      <a id="14b4e74b561f03z"></a>
+
+
+
+        <span ng-non-bindable>
+          <div class="AddToLesson" data-react-class="AddToLesson" data-react-props="{&quot;lesson_id&quot;:969,&quot;watch_later_id&quot;:13287}"></div>
+        </span>
+
+
+        <a id="quick-rewind"
+           class="custom-btn"
+           ng-click="rewind(10)">
+          <i class="fa fa-angle-double-left"></i>
+        <span class="hidden-xs">
+          10s
+        </span>
+        </a>
+        <a id="quick-skip"
+           class="custom-btn"
+           ng-click="skip(25)">
+          <i class="fa fa-angle-double-right"></i>
+        <span class="hidden-xs">
+          25s
+        </span>
+        </a>
+
+    </div>
+    <!--<a class="custom-btn custom-btn-blue custom-btn-secondary" href="#">Add to Playlist...</a>-->
+    <!--<br class="visible-xs">-->
+
+    <div class="lesson-like-container">
+      <span>
+        <a ng-click="playlist.toggleTheaterMode()" class="hidden-sm hidden-xs toggle-theater-mode-btn"><i class="fa" ng-class="{'fa-expand': !playlist.theaterMode, 'fa-compress': playlist.theaterMode}"></i></a>
+        <span class="like-description hidden-md">LIKE</span>
+        <a id="lesson-like" class="lesson-like-btn "><i class="icon-thumbs-up"></i></a>
+        <a id="lesson-dislike" class="lesson-like-btn "><i class="icon-thumbs-down icon-flip-horizontal"></i></a>
+      </span>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        $('#lesson-like').click(function(event) {
+          track('clicked like', {
+            category: 'content',
+            'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+              'instructor': 'Kassandra Perch' 
+        });
+      });
+      $('#lesson-dislike').click(function(event) {
+        track('clicked unlike', {
+          category: 'content',
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' 
+      });
+      });
+
+
+
+      $('#lesson-favorite').click(function(event) {
+        track('clicked favorite', {
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' ,
+          category: 'content'
+      });
+      });
+      });
+      $(function() {
+        window.regit("14b4e74b561f03", "misc-creating-jwts-json-web-tokens-in-node");
+      })
+
+    </script>
+  </div><!-- buttons-holder --><!-- end DownloadTrackerController -->
+
+</div>
+        </div><!-- lesson-frame-column -->
+
+        <div data-react-class="NextUpLessonList" data-react-props="{&quot;lesson_slug&quot;:&quot;misc-creating-jwts-json-web-tokens-in-node&quot;,&quot;playlist_slug&quot;:null,&quot;series_slug&quot;:null,&quot;not_pro&quot;:false}"></div>
+      </div><!-- lesson-with-playlist-holder -->
+    </div>
+  </div><!-- container -->
+</section>
+
+
+
+
+
+<section ng-hide="app.isBlocked()" ng-cloak class="section section-lesson">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 part-left">
+        <div class="lesson-description-holder">
+
+          <h3>
+            <i id="completed-icon" class="icon-check complete pointer" style="display: none"></i>
+            <i id="uncompleted-icon" class="icon-check-empty not-completed pointer" style="display: none"></i>
+            Creating JWTs (JSON Web Tokens) in Node
+          </h3>
+
+          <script type="text/javascript" charset="utf-8">
+            $(function() {
+              var completed = $('#completed-icon'),
+                  uncompleted = $('#uncompleted-icon');
+
+              completed.hide();
+              uncompleted.show();
+
+              completed.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_uncomplete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+              uncompleted.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_complete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+            });
+          </script>
+
+          <div class="info-line">
+            <small class="duration"><i class="icon-time"></i> 4:53</small>
+            <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/node">Node.js</a></small>
+            <small> lesson by <a class="underlined" href="/instructors/kassandra-perch" rel="author">Kassandra Perch</a></small>
+          </div>
+          
+          
+
+          <div ng-non-bindable class="description-text-holder">
+          <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.</p>
+
+          </div>
+            <div  ng-controller="LessonFlagController as lessonFlag">
+              <div class="info-line text-right">
+                <small class="update-date">last updated: 2016/06/30</small>
+                <a href="#" id="revision-form-trigger" ng-class="{collapsed: !lessonFlag.current}" data-toggle="collapse" data-target="#revision-form-collapse" aria-expanded="false" aria-controls="revision-form-collapse"><i class="icon-flag"></i></a>
+              </div>
+              <div id="revision-form-collapse" class="collapse">
+                <div class="colored-box grey with-gap">
+                  <div class="col-xs-12">
+  <form ng-submit="lessonFlag.saveFlag()" name="lessonFlagForm">
+    <h3 class="text-center" ng-if="!lessonFlag.submitted">Flag this Lesson for Revision</h3>
+    <h3 class="text-center text-success"  ng-if="lessonFlag.submitted">{{lessonFlag.submittedText}}</h3>
+
+    <div class="revision-form-holder">
+      <div class="media-left part part-left">
+        <h5>What's wrong with this lesson?</h5>
+        <div class="questions-holder">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="outOfDate" ng-model="lessonFlag.issues.outOfDate" ng-required="lessonFlag.reasonSelected()"> Library out of date
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="notClear" ng-model="lessonFlag.issues.notClear" ng-required="lessonFlag.reasonSelected()"> Doesn't make sense
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="audioIssues" ng-model="lessonFlag.issues.audioIssues" ng-required="lessonFlag.reasonSelected()"> Audio problems
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="codeErrors" ng-model="lessonFlag.issues.codeErrors" ng-required="lessonFlag.reasonSelected()"> Code errors
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="willSpecify" ng-model="lessonFlag.issues.willSpecify" ng-required="lessonFlag.reasonSelected()"> Other (please add to notes)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h5>How bad is the problem?</h5>
+          <select class="chosen-select" ng-model="lessonFlag.severity" chosen ng-options="item for item in lessonFlag.severityValues">
+          </select>
+        </div>
+      </div>
+      <div class="media-body part part-right">
+        <h5>Your notes</h5>
+        <div class="notes-textarea-holder">
+          <textarea rows="5" class="form-control" ng-model="lessonFlag.notes"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-holder">
+      <button type="submit" class="custom-btn custom-btn-blue custom-btn-secondary pull-right" ng-class="{disabled: lessonFlag.submitting || lessonFlagForm.$invalid}" ng-disabled="lessonFlag.submitting || lessonFlagForm.$invalid">
+        Send Feedback
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $('.chosen-select').chosen({
+    disable_search_threshold: 10,
+    placeholder_text_single: ' '
+  });
+</script>
+                </div>
+              </div>
+            </div>
+
+
+          <div class="share-lesson-holder">
+              <ul class="social-likes">
+                <li><small>Share this lesson:</small></li>
+                <li class="facebook" title="Share link on Facebook">Facebook</li>
+                <li class="twitter" title="Share link on Twitter">Twitter</li>
+                <li class="plusone" title="Share link on Google+">Google+</li>
+              </ul>
+          </div><!-- share-lesson-holder -->
+        </div><!-- lesson-description-holder -->
+
+          <div class="tabs-holder ">
+  <ul class="nav nav-tabs sticky" role="tablist">
+
+      <li class="active"><a href="#tab-discuss" role="tab" data-toggle="tab" >
+        <small>Discuss</small>
+      </a></li>
+
+      <li><a href="#tab-transcript" role="tab" data-toggle="tab">
+        <small>Transcript</small>
+      </a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+
+
+      <div class="comments tab-pane ng-non-bindable active" id="tab-discuss">
+        <div id='topic' class='unlocked'>
+  <br/>
+  
+
+  
+
+
+<div id="guidelinesModal" class="modal fade" tabindex='-1'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Comment Guidelines</h4>
+      </div>
+      <div class="modal-body">
+        <p>Member comments are a way for PRO Members to communicate, interact, and ask questions about a lesson.</p>
+
+
+        <h3>Commenting Guidelines</h3>
+
+        <p>Here are some basic guidelines for commenting on egghead.io.</p>
+
+        <h3>Be on-topic</h3>
+
+        <p>Comments are for discussing a lesson. If you&#39;re having a general issue with the website functionality, please contact <a href="mailto:support@egghead.io" data-uv-trigger>click here</a>. </p>
+
+        <h3>Avoid meta-discussion</h3>
+
+        <p>Is your comment resembles:</p>
+
+        <ul>
+          <li>This was great!</li>
+          <li>This was horrible!</li>
+          <li>I didn&#39;t like this because it didn&#39;t match my skill level.</li>
+          <li>+1</li>
+        </ul>
+
+        <p>It will likely be deleted as &quot;meta&quot;.</p>
+
+        <h3>Code problem?</h3>
+
+        <p>Should be accompanied by code! JSFiddle, Plunker, CodePen, etc all provide a way to share code and discuss it in context.</p>
+
+        <h3>Details and Context</h3>
+
+        <p>Vague question? Vague answer. Any details and context you can provide will lure more interesting answers!</p>
+      </div>
+
+    </div><!-- /.modal-content. -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<p class="pad-bottom text-right"><small><a href="#guidelinesModal" data-toggle="modal" data-keyboard="true" data-target="#guidelinesModal"  >egghead.io comment guidelines</a></small></p>
+    <div class="forum-actions-holder align-left">
+      <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.reply">Reply</span></a>
+        <a data-method="post" href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/subscribe" rel="nofollow"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.subscribe">Subscribe</span></a>
+
+  </div>
+
+
+  <div id='posts'>
+    <div id='post_1' class='post odd'>
+
+  <div class="flexbox-row xs-flexbox-column">
+    <div class='post-avatar-holder'>
+      <img alt="Avatar" src="https://secure.gravatar.com/avatar/4102ef776a7173064f3b476c7f77078a?class=avatar&amp;s=100" />
+    </div>
+    <div class='post-content-holder'>
+      <div class="post-details">
+        <span class='username'>
+          egghead.io
+        </span>
+        <span>
+          <a class='post-time' href='/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node#post-4697'>
+            <time datetime="2016-06-30 16:27:42">
+              11 days  ago
+            </time>
+          </a>
+        </span>
+      </div>
+      <div class="post-text">
+        <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger. </p>
+
+      </div>
+        <div class='forum-actions-holder'>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?reply_to_id=4697">Reply</a>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?quote=true&amp;reply_to_id=4697">Quote</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+      </div>
+
+        <div class="tab-pane ng-non-bindable" id="tab-transcript">
+          <div class="well padded white-background">
+            <p>Hello and welcome to our lesson on JSON Web Tokens also known as JWTs. What we&#39;re going to do is create a JWT using the node command line. The way I&#39;m going to do this is by creating each of the three pieces of a JWT -- the header, the payload, and the key -- sign the key, and then show you all how to debug a JWT.</p>
+
+<p>First, let&#39;s start with our header. Our header is a JSON object with two claims. Claims are a fancy word for JSON key value pairs, and the two we&#39;re putting here are typ which stands for type, and alg which stands for algorithm which is what we&#39;ll use to sign the key.</p>
+
+<p>Now that we have our header object, we need to turn it into a base64 encoded string. We&#39;re going to do that by placing it in a buffer with JSON.stringify, our header, and then to string that bugger with base64.</p>
+
+<p>We have our header. What we&#39;re going to do is create our payload. When I talk about claims, I mentioned that there are fancy words for JSON key pairs, but there are several types of claims.</p>
+
+<p>For instance, there are public claims which are registered in the specification in under a registry, there are reserved claims like iat which stands for issued at which are part of the specification, or issuer also part of the specification, and then there&#39;s private claims which are claims you can write yourself. Things like user name.</p>
+
+<p>These can have more than three characters whereas public and reserve tend to have three characters. Now that we have our payload, we&#39;re going to turn it into a base64 encoded string just like we did with the previous one.</p>
+
+<p>Now that we have our header, and our payload, let&#39;s talk about creating the key. There&#39;s a little bit more to creating the key than the other two items. What we need to do is first create our base key which is our header. Can catenate it with a period, can catenate it with our payload.</p>
+
+<p>We need to sign the key. To do that, we&#39;re going to use the crypto library for node. We&#39;re going to create a signature, and it&#39;ll be a crypto.createHmac. The first thing we&#39;re going to pass it is sha256 which is the algorithm we mentioned in the header. The second thing we&#39;re going to pass it is our secret.</p>
+
+<p>This secret should be shared between the server, and whichever parties you want to authenticate the token with because that&#39;s how they&#39;ll know that the identity is verified. Now that we have our signature Hmac, we&#39;re going to update it with our key.</p>
+
+<p>Finally, to create the finalized version of our key, we&#39;re going to digest this signature with the format of base64. We have all of the pieces of our JSON Web token, so let&#39;s assemble it. All the JSON token is, is our header, plus the period, plus the payload, plus another period, plus the signed digested key.</p>
+
+<p>Let&#39;s take a look, and now we&#39;ve got our JSON token. I&#39;m going to copy that, and I&#39;m going to next show you how to debug this JSON Web token using the jwt.io website. This is the jwt.io website. If you scroll down just a little bit, you&#39;ll find the debugger. What we&#39;re going to do is we&#39;re going to paste our newly made JWT into this debugger.</p>
+
+<p>As you can see on the right, it decodes all the base64 encoded information, and shows it here in the header, and payload. It talks a little bit about our signature. However, as you can see, it says invalid signature. That&#39;s because the secret here is not the secret we used to sign our key.</p>
+
+<p>I&#39;m going to change it, and as you can see, it now says signature verified. That&#39;s how you make sure that the JWTs that are sent to your server are from who they say they are, is by verifying that the key was signed in the correct way.</p>
+
+<p>You can also sign keys asymmetrically with RSA 56 public private key pairs. To learn even more about JWTs, I highly recommend the jwt.io website. We have a lot of information there, and you can definitely read it a little more easily than the specification. Though I would definitely recommend reading RFC 7519 to learn more.</p>
+
+<p>Thanks for listening.</p>
+
+          </div>
+        </div>
+
+
+  </div> <!-- tabs-content -->
+</div><!-- tabs-holder -->
+
+      </div><!-- part-left -->
+
+      <div class="col-sm-12 col-md-4 part-right">
+
+        <!-- Featured Series -->
+        <div class="explore-series-holder">
+          <p><i>Featured course:</i></p>
+
+          <h4><a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications">Using Webpack for Production JavaScript Applications</a></h4>
+          <a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications"><img class="img-responsive" src="https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/054/half/EGH_Webpack-Final-cover.png?1466197336" alt="Using Webpack for Production JavaScript Applications"/></a>
+
+        </div><!-- explore-series-holder -->
+        <br/>
+
+
+        
+        <div class="colored-box light-blue banner-holder">
+          <p><small>egghead.io books presents:</small></p>
+          <div class="logos-holder">
+            <span class="img-holder"><img alt="Angularjs" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/angularjs-bb8c730bb5b75b4d49ed14cc6318eb6d.svg" /></span>
+            <span class="img-holder"><img alt="Grunt" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/grunt-d7eb24a2e4a9822dd89a1e775bfe4c7a.svg" /></span>
+            <span class="img-holder"><img alt="Logo notext" src="//d1xwtr0qwr70yv.cloudfront.net/assets/logo-notext-14d700165716440ad5383594303e29bc.svg" /></span>
+
+          </div><!-- logos-holder -->
+
+          <p><strong>Stop wasting time. Start your AngularJS project with proper automation.</strong></p>
+
+            <a href="/essential-angularjs-grunt-build?d=urpro" class="underlined link-with-arrow"><small>Learn more about the book</small></a>
+
+        </div>
+      </div><!-- part-right -->
+    </div>
+  </div>
+</section>
+
+
+<script type="text/javascript" charset="utf-8">
+  //set the lesson id for angular to access
+  window.lesson_id = 969;
+  window.lesson_slug = 'misc-creating-jwts-json-web-tokens-in-node';
+  window.tech_name = 'node';
+  window.old_technology = 'Misc';
+  window.instructor = 'Kassandra Perch';
+  window.shouldBlock = false;
+</script>
+
+</div>
+</div>
+
+
+<script src="//d1xwtr0qwr70yv.cloudfront.net/assets/lessons-757f4db39d0515b19b7832c682f97b6c.js"></script>
+
+<!-- end redux -->
+
+
+
+
+
+
+
+
+
+
+
+      <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 footer-part-left">
+          <ul class="list-unstyled">
+            <li><a href="/stories">egghead Success Stories</a></li>
+            <li><a href="/instructors">instructors</a></li>
+          </ul>
+          <br/>
+          <div class="div terms-conditions-holder">
+            &copy; egghead.io
+            <br>
+            <a href="/privacy">Terms and Conditions &amp; Privacy Policy</a>
+          </div>
+          <!-- terms-conditions-holder -->
+
+          <div class="social-holder">
+            <a href="https://twitter.com/eggheadio" class="icon-twitter"></a>
+            <a href="https://www.facebook.com/eggheadio" class="icon-facebook"></a>
+            <a href="https://plus.google.com/+EggheadIo" rel="publisher" class="icon-google-plus"></a>
+          </div>
+          <!-- social-holder -->
+        </div>
+        <!-- footer-part-left -->
+
+        <div class="col-md-4 footer-part-right">
+          <h4 class="title">Search Lessons</h4>
+
+          <div data-react-class="AutocompleteInput" data-react-props="{}"></div>
+        </div>
+        <!-- footer-part-right -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </footer>
+
+
+  <script type="text/javascript" charset="utf-8">
+      page_data = {}
+
+  window.egh_page = {
+    type: 'viewed lesson', data: _.merge({}, page_data, {
+      lesson: 'misc-creating-jwts-json-web-tokens-in-node',
+      duration: 293,
+      instructor: 'Kassandra Perch',
+      technology: 'node'
+    })
+  };
+
+  </script>
+
+
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0381c6718931891195787019e4835879");</script><!-- end Mixpanel -->
+
+
+
+  <script type="text/javascript">
+    window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+        window.analytics.load('blfa6tadx3');
+    window.analytics.ready(window.identify);
+
+    window.analytics.page();
+  </script>
+
+
+  <!-- Drip -->
+  <script type="text/javascript">
+    var _dcq = _dcq || [];
+    var _dcs = _dcs || {};
+    _dcs.account = '9429362';
+
+    (function() {
+      var dc = document.createElement('script');
+      dc.type = 'text/javascript'; dc.async = true;
+      dc.src = '//tag.getdrip.com/9429362.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(dc, s);
+    })();
+  </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1628664980699314');
+      fbq('track', "PageView");
+        fbq('trackCustom', "PageViewSubscriber");
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1628664980699314&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>!function(e,o,n){window.HSCW=o,window.HS=n,n.beacon=n.beacon||{};var t=n.beacon;t.userConfig={},t.readyQueue=[],t.config=function(e){this.userConfig=e},t.ready=function(e){this.readyQueue.push(e)},o.config={docs:{enabled:!0,baseUrl:"//egghead.helpscoutdocs.com/"},contact:{enabled:!0,formId:"967282e1-37fd-11e6-aae8-0a7d6919297d"}};var r=e.getElementsByTagName("script")[0],c=e.createElement("script");c.type="text/javascript",c.async=!0,c.src="https://djtflbt20bdde.cloudfront.net/",r.parentNode.insertBefore(c,r)}(document,window.HSCW||{},window.HS||{});</script>
+    <script type="text/javascript" charset="utf-8">
+      HS.beacon.config({
+        color: '#555555',
+        icon: 'message',
+        instructions: 'Questions related to lessons should be added as comments on the lesson itself.',
+        poweredBy: false
+      });
+
+    </script>
+<script type="text/javascript" charset="utf-8">
+    HS.beacon.ready(function() {
+      HS.beacon.identify({
+        name: 'Justin',
+        email: 't.justin.calder@gmail.com',
+        'PRO Member': true
+      });
+    });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  });
+</script>
+  <div id="survey-container">
+  <div class="survey-collapse-bar">
+    <a href="#" class="close-survey"></a>
+  </div>
+  <div class="survey-question">
+  </div>
+  <div class="survey-why">
+    <span data-toggle="tooltip" data-placement="top"
+          title="We're working to better personalize the content we write and send to you. The more we know about you and your needs, the better we can serve!">Why are we asking?</span>
+  </div>
+  <ul class="survey-answers">
+  </ul>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"92765cace1","applicationID":"3539411","transactionName":"JldeQUdaDw1WRU4KBxZLX1tGGhAJXEA=","queueTime":0,"applicationTime":290,"ttGuid":"","agentToken":null,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgAAWFRaGwAFV1hWBgA="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,(new Date).getTime(),!0])}catch(s){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(14)(a),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=s(n,"nr@wrapped",function(){return c(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&c.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(14)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(14)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",c)}function i(t){y.push(t),h&&(w=-w,x.data=w)}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(14)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,g),g.prototype=p.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var w=1,x=document.createTextNode(w);new h(a).observe(x,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],c])}f(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],c),l}finally{f(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<n.length;s++)c=n[s],a=t[c],r(a)||(t[c]=e(a,f?c+o:o,i,c))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),c=a.length,s=0;s<c;s++)a[s].apply(i,r);var u=f[v[n]];return u&&u.push([y,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){s(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},y={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return y}function i(){return new r}var a="nr@context",c=t("gos"),s=t(12),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!w++){var t=g.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(v,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;g.proto=n?"https://":"http://",c("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=g.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){c("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var c=t("handle"),s=t(12),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(9);var m=""+location,v={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},y=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:a(),origin:m,features:{},xhrWrappable:y};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),c("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader",2,7]);</script>
+
+  <title>Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free @eggheadio</title>
+  <link rel="shortcut icon" href="/favicon.ico?v=2" />
+
+  <link rel="apple-touch-icon" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-57x57-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-72x72-849fa4fbea059f853924bf41684eef7f.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-114x114-e7e7594ee2a8bdc39641de944b388e72.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-144x144-8910c2294eab00b4ca5769d2c0e6b3ea.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-60x60-f13f194d784242cf7acbce5f2d3c216c.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-120x120-2de8da13b42db7df9a7b753390ceabc0.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-76x76-4eeb7c262c977c89d1d43e93463c18a1.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-152x152-ae1d4a7323a1c5ecd9d970e36a4b91ec.png" />
+  <meta name="application-name" content="egghead.io"/>
+  <meta name="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <script src="//d1xwtr0qwr70yv.cloudfront.net/assets/application-3a8471caec9df5c6a1aa9f7ba70f7790.js"></script>
+  <!--<script src="//cdn.optimizely.com/js/857661637.js"></script>-->
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="dHnl8mYdEk4pUF25BUHjl+iV2MkSRXCD/l/4ChLBK18=" name="csrf-token" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta property="og:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." >
+  <meta property="og:image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png" >
+  <meta property="og:title" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free" >
+
+  <meta property="og:type" content="website" >
+  <link href="/feed" rel="alternate" title="RSS" type="application/rss+xml" />
+
+  <link href="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" rel="canonical" />
+
+      <meta name="twitter:card" content="product">
+
+<meta name="twitter:site" content="@eggheadio" />
+<meta name="twitter:creator" content="@@nodebotanist">
+<meta name="twitter:title" content="node Lesson: Creating JWTs (JSON Web Tokens) in Node" />
+<meta name="twitter:url" content="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" />
+<meta name="twitter:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." />
+<meta name="twitter:image" content="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-introduction-to-json-web-tokens/egghead-introduction-to-json-web-tokens.jpg" />
+
+  <script language="javascript" type="text/javascript">
+    try {
+      var raw_playlists = "{\"playlists\":[{\"id\":13287,\"title\":\"Watch Later\",\"description\":null,\"slug\":\"watch-later-dd4e55947955f2c8\",\"published\":null,\"updated_at\":\"2016-01-04T16:56:38.450-06:00\",\"created_at\":\"2015-07-17T01:05:47.249-05:00\",\"technology_id\":null,\"playlist_url\":\"https://egghead.io/api/v1/playlists/watch-later-dd4e55947955f2c8\",\"is_watch_later\":true,\"playlist_http_url\":\"https://egghead.io/playlists/watch-later-dd4e55947955f2c8\",\"new_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/new\",\"edit_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/watch-later-dd4e55947955f2c8\",\"lessons\":[{\"id\":175}]}]}";
+      window.playlists = JSON.parse(raw_playlists).playlists;
+    } catch (e) {
+
+    }
+  </script>
+
+
+
+  <link href="//d1xwtr0qwr70yv.cloudfront.net/assets/application-fc198c8dabe3a741caa3f60504324171.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 8]>
+    <link href="//d1xwtr0qwr70yv.cloudfront.net/stylesheets/font-awesome-ie7.min.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+  <!--Typekit-->
+  <script type="text/javascript" src="//use.typekit.net/vdt8itv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+
+
+  <script>
+
+    window.docCookies = {
+      getItem: function (sKey) {
+        if (!sKey) { return null; }
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+      },
+      setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+        var sExpires = "";
+        if (vEnd) {
+          switch (vEnd.constructor) {
+            case Number:
+              sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+              break;
+            case String:
+              sExpires = "; expires=" + vEnd;
+              break;
+            case Date:
+              sExpires = "; expires=" + vEnd.toUTCString();
+              break;
+          }
+        }
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+        return true;
+      },
+      removeItem: function (sKey, sPath, sDomain) {
+        if (!this.hasItem(sKey)) { return false; }
+        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+        return true;
+      },
+      hasItem: function (sKey) {
+        if (!sKey) { return false; }
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+      },
+      keys: function () {
+        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+        return aKeys;
+      }
+    };
+
+     window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+
+    window.identify = function() {
+      $.get('/current_user').then(function(options) {
+        if(options.id) {
+          analytics.identify(options.id, options);
+          if(mixpanel) {
+            mixpanel.identify(options.email);
+            mixpanel.people.set(_.merge({}, options, {
+              "$first_name": options.name,
+              "$created": options.created_at,
+              "$email": options.email
+            }));
+          }
+        } else {
+          analytics.identify();
+        }
+      });
+    }
+  </script>
+
+  <!-- Start Visual Website Optimizer Asynchronous Code -->
+  <script type='text/javascript'>
+    var _vwo_code=(function(){
+      var account_id=48528,
+          settings_tolerance=2000,
+          library_tolerance=2500,
+          use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+          f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+  </script>
+  <!-- End Visual Website Optimizer Asynchronous Code -->
+</head>
+
+<body itemscope itemtype="http://schema.org/Article">
+
+  <meta itemprop="name" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial"/>
+  <meta itemprop="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <meta itemprop="image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png">
+
+  <header>
+  <nav role="navigation" class="navbar header-navigation-holder">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button data-target="#header-navigation" data-toggle="collapse" class="navbar-toggle header-navigation-toggle"
+                type="button">
+          <i class="icon-reorder"></i>
+        </button>
+        <a href="/" class="navbar-brand logo">
+          <img alt="Logo with text" class="img-responsive hidden-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-with-text-eb7046b6c5f1e2078fe6e036a790f9c4.svg" />
+          <img alt="Logo mobile" class="img-responsive hidden-xs visible-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-mobile-316af2740086b0efd4e28d41a3669015.svg" />
+        </a>
+      </div>
+
+      <div id="header-navigation" class="collapse navbar-collapse header-navigation">
+        <ul class="nav navbar-nav header-navigation-list">
+
+          <li class=""><a href="/lessons">Browse</a></li>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><a href="/playlists">Playlists</a></li>
+
+
+
+          <li class=""><a href="/angularjs-enterprise-training-workshop">On-Site Training</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right header-navigation-list">
+
+
+
+
+
+
+
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Justin  <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+
+                <li><a href="/users/46992">User</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li class="divider"></li>
+                <li><a href="/watch_later">Watch Later</a></li>
+                <li class="divider"></li>
+                <li><a class="btn-nav btn-nav-secondary" data-method="delete" href="/users/sign_out" rel="nofollow">Logout</a></li>
+              </ul>
+
+            </li>
+          <li class="hidden-xs full-height">
+
+              <a href="/membership" class="custom-label custom-label-red"><strong>PRO</strong></a>
+              <a href="/users/46992" class="userpic-holder">
+                <img alt="Justin" class="userpic" height="30" src="https://secure.gravatar.com/avatar/cc8020c4168ef3b05aa1d191d2b5a232?default=identicon&secure=true&size=30" width="30" />
+              </a>
+
+            </li>
+              <li class="half-height egghead-search-input-container">
+               <div data-react-class="EggheadSearchComponent" data-react-props="{}"></div>
+            </li>
+
+        </ul>
+      </div>
+      <!--header-navigation-->
+    </div>
+    <!--container-fluid-->
+  </nav>
+  <!-- header-navigation-holder -->
+</header>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+//    window.identify();
+
+
+  })
+</script>
+
+
+<div ng-app="egghead-lesson" ng-controller="AppCtrl as app">
+<div  ng-controller="LessonViewCtrl">
+
+
+<section class="hero" >
+  <div class="lesson-video-container"  ng-controller="PlaylistCtrl as playlist">
+    <div ng-cloak>
+      <div class="lesson-with-playlist-holder">
+        <div ng-class="{'lesson-frame-column': !playlist.theaterMode, 'lesson-frame-column-theater': playlist.theaterMode}">
+          <div class="lessons-frame-holder">
+      <script>
+        window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+      </script>
+  <div class="lessons-frame">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+<div id="wistia_79gl8k554u" class="wistia_embed" style="width:100%;height:100%;"><div itemprop="video" itemscope itemtype="http://schema.org/VideoObject"><meta itemprop="name" content="egghead-introduction-to-json-web-tokens.mp4" /><meta itemprop="duration" content="PT4M53S" /><meta itemprop="thumbnailUrl" content="https://embed-ssl.wistia.com/deliveries/6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin" /><meta itemprop="contentURL" content="http://embed.wistia.com/deliveries/2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="embedURL" content="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27&controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="uploadDate" content="2016-06-28T16:02:54Z" /><object id="wistia_79gl8k554u_seo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="display:block;height:720px;position:relative;width:1280px;"><param name="movie" value="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27"></param><param name="allowfullscreen" value="true"></param><param name="bgcolor" value="#000000"></param><param name="wmode" value="opaque"></param><param name="flashvars" value="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin"></param><embed src="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27" allowfullscreen="true" bgcolor=#000000 flashvars="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" name="wistia_79gl8k554u_html" style="display:block;height:100%;position:relative;width:100%;" type="application/x-shockwave-flash" wmode="opaque"></embed></object><noscript itemprop="description">egghead-introduction-to-json-web-tokens.mp4</noscript></div></div>
+</div></div>
+<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js"></script>
+<script>
+wistiaEmbed = Wistia.embed("79gl8k554u", {
+  videoFoam: true,
+  playerPreference: "html5"
+});
+</script>
+<script charset="ISO-8859-1" src="//fast.wistia.com/embed/medias/79gl8k554u/metadata.js"></script>
+
+
+  </div>
+</div><!-- lessons-frame-holder -->
+          
+<div class="lesson-action-holder" ng-cloak>
+  <div class="buttons-holder" ng-controller="DownloadTrackerController">
+    <div class="lesson-controls-container">
+
+      <a id="playbackSpeed"
+         class="custom-btn square-btn-grey replay-speed-btn hidden-xs"
+         ng-click="speedChange.cycleSpeed()"
+         ng-controller="SpeedChangeController as speedChange">
+        <i class="icon-double-angle-right"></i>
+        {{speedChange.playbackSpeed}}x
+      </a>
+      <a id="8c305f9b083de2"
+         class="custom-btn"
+         ng-click="onDownload(969,293, $event)">
+        <i class="fa fa-download"></i>
+        <span class="hidden-xs">
+          Download <span class="hidden-md">in HD</span>
+        </span>
+      </a>
+
+      <a id="8c305f9b083de2z"></a>
+
+
+
+        <span ng-non-bindable>
+          <div class="AddToLesson" data-react-class="AddToLesson" data-react-props="{&quot;lesson_id&quot;:969,&quot;watch_later_id&quot;:13287}"></div>
+        </span>
+
+
+        <a id="quick-rewind"
+           class="custom-btn"
+           ng-click="rewind(10)">
+          <i class="fa fa-angle-double-left"></i>
+        <span class="hidden-xs">
+          10s
+        </span>
+        </a>
+        <a id="quick-skip"
+           class="custom-btn"
+           ng-click="skip(25)">
+          <i class="fa fa-angle-double-right"></i>
+        <span class="hidden-xs">
+          25s
+        </span>
+        </a>
+
+    </div>
+    <!--<a class="custom-btn custom-btn-blue custom-btn-secondary" href="#">Add to Playlist...</a>-->
+    <!--<br class="visible-xs">-->
+
+    <div class="lesson-like-container">
+      <span>
+        <a ng-click="playlist.toggleTheaterMode()" class="hidden-sm hidden-xs toggle-theater-mode-btn"><i class="fa" ng-class="{'fa-expand': !playlist.theaterMode, 'fa-compress': playlist.theaterMode}"></i></a>
+        <span class="like-description hidden-md">LIKE</span>
+        <a id="lesson-like" class="lesson-like-btn "><i class="icon-thumbs-up"></i></a>
+        <a id="lesson-dislike" class="lesson-like-btn "><i class="icon-thumbs-down icon-flip-horizontal"></i></a>
+      </span>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        $('#lesson-like').click(function(event) {
+          track('clicked like', {
+            category: 'content',
+            'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+              'instructor': 'Kassandra Perch' 
+        });
+      });
+      $('#lesson-dislike').click(function(event) {
+        track('clicked unlike', {
+          category: 'content',
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' 
+      });
+      });
+
+
+
+      $('#lesson-favorite').click(function(event) {
+        track('clicked favorite', {
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' ,
+          category: 'content'
+      });
+      });
+      });
+      $(function() {
+        window.regit("8c305f9b083de2", "misc-creating-jwts-json-web-tokens-in-node");
+      })
+
+    </script>
+  </div><!-- buttons-holder --><!-- end DownloadTrackerController -->
+
+</div>
+        </div><!-- lesson-frame-column -->
+
+        <div data-react-class="NextUpLessonList" data-react-props="{&quot;lesson_slug&quot;:&quot;misc-creating-jwts-json-web-tokens-in-node&quot;,&quot;playlist_slug&quot;:null,&quot;series_slug&quot;:null,&quot;not_pro&quot;:false}"></div>
+      </div><!-- lesson-with-playlist-holder -->
+    </div>
+  </div><!-- container -->
+</section>
+
+
+
+
+
+<section ng-hide="app.isBlocked()" ng-cloak class="section section-lesson">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 part-left">
+        <div class="lesson-description-holder">
+
+          <h3>
+            <i id="completed-icon" class="icon-check complete pointer" style="display: none"></i>
+            <i id="uncompleted-icon" class="icon-check-empty not-completed pointer" style="display: none"></i>
+            Creating JWTs (JSON Web Tokens) in Node
+          </h3>
+
+          <script type="text/javascript" charset="utf-8">
+            $(function() {
+              var completed = $('#completed-icon'),
+                  uncompleted = $('#uncompleted-icon');
+
+              completed.hide();
+              uncompleted.show();
+
+              completed.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_uncomplete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+              uncompleted.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_complete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+            });
+          </script>
+
+          <div class="info-line">
+            <small class="duration"><i class="icon-time"></i> 4:53</small>
+            <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/node">Node.js</a></small>
+            <small> lesson by <a class="underlined" href="/instructors/kassandra-perch" rel="author">Kassandra Perch</a></small>
+          </div>
+          
+          
+
+          <div ng-non-bindable class="description-text-holder">
+          <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.</p>
+
+          </div>
+            <div  ng-controller="LessonFlagController as lessonFlag">
+              <div class="info-line text-right">
+                <small class="update-date">last updated: 2016/06/30</small>
+                <a href="#" id="revision-form-trigger" ng-class="{collapsed: !lessonFlag.current}" data-toggle="collapse" data-target="#revision-form-collapse" aria-expanded="false" aria-controls="revision-form-collapse"><i class="icon-flag"></i></a>
+              </div>
+              <div id="revision-form-collapse" class="collapse">
+                <div class="colored-box grey with-gap">
+                  <div class="col-xs-12">
+  <form ng-submit="lessonFlag.saveFlag()" name="lessonFlagForm">
+    <h3 class="text-center" ng-if="!lessonFlag.submitted">Flag this Lesson for Revision</h3>
+    <h3 class="text-center text-success"  ng-if="lessonFlag.submitted">{{lessonFlag.submittedText}}</h3>
+
+    <div class="revision-form-holder">
+      <div class="media-left part part-left">
+        <h5>What's wrong with this lesson?</h5>
+        <div class="questions-holder">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="outOfDate" ng-model="lessonFlag.issues.outOfDate" ng-required="lessonFlag.reasonSelected()"> Library out of date
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="notClear" ng-model="lessonFlag.issues.notClear" ng-required="lessonFlag.reasonSelected()"> Doesn't make sense
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="audioIssues" ng-model="lessonFlag.issues.audioIssues" ng-required="lessonFlag.reasonSelected()"> Audio problems
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="codeErrors" ng-model="lessonFlag.issues.codeErrors" ng-required="lessonFlag.reasonSelected()"> Code errors
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="willSpecify" ng-model="lessonFlag.issues.willSpecify" ng-required="lessonFlag.reasonSelected()"> Other (please add to notes)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h5>How bad is the problem?</h5>
+          <select class="chosen-select" ng-model="lessonFlag.severity" chosen ng-options="item for item in lessonFlag.severityValues">
+          </select>
+        </div>
+      </div>
+      <div class="media-body part part-right">
+        <h5>Your notes</h5>
+        <div class="notes-textarea-holder">
+          <textarea rows="5" class="form-control" ng-model="lessonFlag.notes"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-holder">
+      <button type="submit" class="custom-btn custom-btn-blue custom-btn-secondary pull-right" ng-class="{disabled: lessonFlag.submitting || lessonFlagForm.$invalid}" ng-disabled="lessonFlag.submitting || lessonFlagForm.$invalid">
+        Send Feedback
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $('.chosen-select').chosen({
+    disable_search_threshold: 10,
+    placeholder_text_single: ' '
+  });
+</script>
+                </div>
+              </div>
+            </div>
+
+
+          <div class="share-lesson-holder">
+              <ul class="social-likes">
+                <li><small>Share this lesson:</small></li>
+                <li class="facebook" title="Share link on Facebook">Facebook</li>
+                <li class="twitter" title="Share link on Twitter">Twitter</li>
+                <li class="plusone" title="Share link on Google+">Google+</li>
+              </ul>
+          </div><!-- share-lesson-holder -->
+        </div><!-- lesson-description-holder -->
+
+          <div class="tabs-holder ">
+  <ul class="nav nav-tabs sticky" role="tablist">
+
+      <li class="active"><a href="#tab-discuss" role="tab" data-toggle="tab" >
+        <small>Discuss</small>
+      </a></li>
+
+      <li><a href="#tab-transcript" role="tab" data-toggle="tab">
+        <small>Transcript</small>
+      </a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+
+
+      <div class="comments tab-pane ng-non-bindable active" id="tab-discuss">
+        <div id='topic' class='unlocked'>
+  <br/>
+  
+
+  
+
+
+<div id="guidelinesModal" class="modal fade" tabindex='-1'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Comment Guidelines</h4>
+      </div>
+      <div class="modal-body">
+        <p>Member comments are a way for PRO Members to communicate, interact, and ask questions about a lesson.</p>
+
+
+        <h3>Commenting Guidelines</h3>
+
+        <p>Here are some basic guidelines for commenting on egghead.io.</p>
+
+        <h3>Be on-topic</h3>
+
+        <p>Comments are for discussing a lesson. If you&#39;re having a general issue with the website functionality, please contact <a href="mailto:support@egghead.io" data-uv-trigger>click here</a>. </p>
+
+        <h3>Avoid meta-discussion</h3>
+
+        <p>Is your comment resembles:</p>
+
+        <ul>
+          <li>This was great!</li>
+          <li>This was horrible!</li>
+          <li>I didn&#39;t like this because it didn&#39;t match my skill level.</li>
+          <li>+1</li>
+        </ul>
+
+        <p>It will likely be deleted as &quot;meta&quot;.</p>
+
+        <h3>Code problem?</h3>
+
+        <p>Should be accompanied by code! JSFiddle, Plunker, CodePen, etc all provide a way to share code and discuss it in context.</p>
+
+        <h3>Details and Context</h3>
+
+        <p>Vague question? Vague answer. Any details and context you can provide will lure more interesting answers!</p>
+      </div>
+
+    </div><!-- /.modal-content. -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<p class="pad-bottom text-right"><small><a href="#guidelinesModal" data-toggle="modal" data-keyboard="true" data-target="#guidelinesModal"  >egghead.io comment guidelines</a></small></p>
+    <div class="forum-actions-holder align-left">
+      <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.reply">Reply</span></a>
+        <a data-method="post" href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/subscribe" rel="nofollow"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.subscribe">Subscribe</span></a>
+
+  </div>
+
+
+  <div id='posts'>
+    <div id='post_1' class='post odd'>
+
+  <div class="flexbox-row xs-flexbox-column">
+    <div class='post-avatar-holder'>
+      <img alt="Avatar" src="https://secure.gravatar.com/avatar/4102ef776a7173064f3b476c7f77078a?class=avatar&amp;s=100" />
+    </div>
+    <div class='post-content-holder'>
+      <div class="post-details">
+        <span class='username'>
+          egghead.io
+        </span>
+        <span>
+          <a class='post-time' href='/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node#post-4697'>
+            <time datetime="2016-06-30 16:27:42">
+              11 days  ago
+            </time>
+          </a>
+        </span>
+      </div>
+      <div class="post-text">
+        <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger. </p>
+
+      </div>
+        <div class='forum-actions-holder'>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?reply_to_id=4697">Reply</a>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?quote=true&amp;reply_to_id=4697">Quote</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+      </div>
+
+        <div class="tab-pane ng-non-bindable" id="tab-transcript">
+          <div class="well padded white-background">
+            <p>Hello and welcome to our lesson on JSON Web Tokens also known as JWTs. What we&#39;re going to do is create a JWT using the node command line. The way I&#39;m going to do this is by creating each of the three pieces of a JWT -- the header, the payload, and the key -- sign the key, and then show you all how to debug a JWT.</p>
+
+<p>First, let&#39;s start with our header. Our header is a JSON object with two claims. Claims are a fancy word for JSON key value pairs, and the two we&#39;re putting here are typ which stands for type, and alg which stands for algorithm which is what we&#39;ll use to sign the key.</p>
+
+<p>Now that we have our header object, we need to turn it into a base64 encoded string. We&#39;re going to do that by placing it in a buffer with JSON.stringify, our header, and then to string that bugger with base64.</p>
+
+<p>We have our header. What we&#39;re going to do is create our payload. When I talk about claims, I mentioned that there are fancy words for JSON key pairs, but there are several types of claims.</p>
+
+<p>For instance, there are public claims which are registered in the specification in under a registry, there are reserved claims like iat which stands for issued at which are part of the specification, or issuer also part of the specification, and then there&#39;s private claims which are claims you can write yourself. Things like user name.</p>
+
+<p>These can have more than three characters whereas public and reserve tend to have three characters. Now that we have our payload, we&#39;re going to turn it into a base64 encoded string just like we did with the previous one.</p>
+
+<p>Now that we have our header, and our payload, let&#39;s talk about creating the key. There&#39;s a little bit more to creating the key than the other two items. What we need to do is first create our base key which is our header. Can catenate it with a period, can catenate it with our payload.</p>
+
+<p>We need to sign the key. To do that, we&#39;re going to use the crypto library for node. We&#39;re going to create a signature, and it&#39;ll be a crypto.createHmac. The first thing we&#39;re going to pass it is sha256 which is the algorithm we mentioned in the header. The second thing we&#39;re going to pass it is our secret.</p>
+
+<p>This secret should be shared between the server, and whichever parties you want to authenticate the token with because that&#39;s how they&#39;ll know that the identity is verified. Now that we have our signature Hmac, we&#39;re going to update it with our key.</p>
+
+<p>Finally, to create the finalized version of our key, we&#39;re going to digest this signature with the format of base64. We have all of the pieces of our JSON Web token, so let&#39;s assemble it. All the JSON token is, is our header, plus the period, plus the payload, plus another period, plus the signed digested key.</p>
+
+<p>Let&#39;s take a look, and now we&#39;ve got our JSON token. I&#39;m going to copy that, and I&#39;m going to next show you how to debug this JSON Web token using the jwt.io website. This is the jwt.io website. If you scroll down just a little bit, you&#39;ll find the debugger. What we&#39;re going to do is we&#39;re going to paste our newly made JWT into this debugger.</p>
+
+<p>As you can see on the right, it decodes all the base64 encoded information, and shows it here in the header, and payload. It talks a little bit about our signature. However, as you can see, it says invalid signature. That&#39;s because the secret here is not the secret we used to sign our key.</p>
+
+<p>I&#39;m going to change it, and as you can see, it now says signature verified. That&#39;s how you make sure that the JWTs that are sent to your server are from who they say they are, is by verifying that the key was signed in the correct way.</p>
+
+<p>You can also sign keys asymmetrically with RSA 56 public private key pairs. To learn even more about JWTs, I highly recommend the jwt.io website. We have a lot of information there, and you can definitely read it a little more easily than the specification. Though I would definitely recommend reading RFC 7519 to learn more.</p>
+
+<p>Thanks for listening.</p>
+
+          </div>
+        </div>
+
+
+  </div> <!-- tabs-content -->
+</div><!-- tabs-holder -->
+
+      </div><!-- part-left -->
+
+      <div class="col-sm-12 col-md-4 part-right">
+
+        <!-- Featured Series -->
+        <div class="explore-series-holder">
+          <p><i>Featured course:</i></p>
+
+          <h4><a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications">Using Webpack for Production JavaScript Applications</a></h4>
+          <a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications"><img class="img-responsive" src="https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/054/half/EGH_Webpack-Final-cover.png?1466197336" alt="Using Webpack for Production JavaScript Applications"/></a>
+
+        </div><!-- explore-series-holder -->
+        <br/>
+
+
+        
+        <div class="colored-box light-blue banner-holder">
+          <p><small>egghead.io books presents:</small></p>
+          <div class="logos-holder">
+            <span class="img-holder"><img alt="Angularjs" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/angularjs-bb8c730bb5b75b4d49ed14cc6318eb6d.svg" /></span>
+            <span class="img-holder"><img alt="Grunt" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/grunt-d7eb24a2e4a9822dd89a1e775bfe4c7a.svg" /></span>
+            <span class="img-holder"><img alt="Logo notext" src="//d1xwtr0qwr70yv.cloudfront.net/assets/logo-notext-14d700165716440ad5383594303e29bc.svg" /></span>
+
+          </div><!-- logos-holder -->
+
+          <p><strong>Stop wasting time. Start your AngularJS project with proper automation.</strong></p>
+
+            <a href="/essential-angularjs-grunt-build?d=urpro" class="underlined link-with-arrow"><small>Learn more about the book</small></a>
+
+        </div>
+      </div><!-- part-right -->
+    </div>
+  </div>
+</section>
+
+
+<script type="text/javascript" charset="utf-8">
+  //set the lesson id for angular to access
+  window.lesson_id = 969;
+  window.lesson_slug = 'misc-creating-jwts-json-web-tokens-in-node';
+  window.tech_name = 'node';
+  window.old_technology = 'Misc';
+  window.instructor = 'Kassandra Perch';
+  window.shouldBlock = false;
+</script>
+
+</div>
+</div>
+
+
+<script src="//d1xwtr0qwr70yv.cloudfront.net/assets/lessons-757f4db39d0515b19b7832c682f97b6c.js"></script>
+
+<!-- end redux -->
+
+
+
+
+
+
+
+
+
+
+
+      <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 footer-part-left">
+          <ul class="list-unstyled">
+            <li><a href="/stories">egghead Success Stories</a></li>
+            <li><a href="/instructors">instructors</a></li>
+          </ul>
+          <br/>
+          <div class="div terms-conditions-holder">
+            &copy; egghead.io
+            <br>
+            <a href="/privacy">Terms and Conditions &amp; Privacy Policy</a>
+          </div>
+          <!-- terms-conditions-holder -->
+
+          <div class="social-holder">
+            <a href="https://twitter.com/eggheadio" class="icon-twitter"></a>
+            <a href="https://www.facebook.com/eggheadio" class="icon-facebook"></a>
+            <a href="https://plus.google.com/+EggheadIo" rel="publisher" class="icon-google-plus"></a>
+          </div>
+          <!-- social-holder -->
+        </div>
+        <!-- footer-part-left -->
+
+        <div class="col-md-4 footer-part-right">
+          <h4 class="title">Search Lessons</h4>
+
+          <div data-react-class="AutocompleteInput" data-react-props="{}"></div>
+        </div>
+        <!-- footer-part-right -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </footer>
+
+
+  <script type="text/javascript" charset="utf-8">
+      page_data = {}
+
+  window.egh_page = {
+    type: 'viewed lesson', data: _.merge({}, page_data, {
+      lesson: 'misc-creating-jwts-json-web-tokens-in-node',
+      duration: 293,
+      instructor: 'Kassandra Perch',
+      technology: 'node'
+    })
+  };
+
+  </script>
+
+
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0381c6718931891195787019e4835879");</script><!-- end Mixpanel -->
+
+
+
+  <script type="text/javascript">
+    window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+        window.analytics.load('blfa6tadx3');
+    window.analytics.ready(window.identify);
+
+    window.analytics.page();
+  </script>
+
+
+  <!-- Drip -->
+  <script type="text/javascript">
+    var _dcq = _dcq || [];
+    var _dcs = _dcs || {};
+    _dcs.account = '9429362';
+
+    (function() {
+      var dc = document.createElement('script');
+      dc.type = 'text/javascript'; dc.async = true;
+      dc.src = '//tag.getdrip.com/9429362.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(dc, s);
+    })();
+  </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1628664980699314');
+      fbq('track', "PageView");
+        fbq('trackCustom', "PageViewSubscriber");
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1628664980699314&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>!function(e,o,n){window.HSCW=o,window.HS=n,n.beacon=n.beacon||{};var t=n.beacon;t.userConfig={},t.readyQueue=[],t.config=function(e){this.userConfig=e},t.ready=function(e){this.readyQueue.push(e)},o.config={docs:{enabled:!0,baseUrl:"//egghead.helpscoutdocs.com/"},contact:{enabled:!0,formId:"967282e1-37fd-11e6-aae8-0a7d6919297d"}};var r=e.getElementsByTagName("script")[0],c=e.createElement("script");c.type="text/javascript",c.async=!0,c.src="https://djtflbt20bdde.cloudfront.net/",r.parentNode.insertBefore(c,r)}(document,window.HSCW||{},window.HS||{});</script>
+    <script type="text/javascript" charset="utf-8">
+      HS.beacon.config({
+        color: '#555555',
+        icon: 'message',
+        instructions: 'Questions related to lessons should be added as comments on the lesson itself.',
+        poweredBy: false
+      });
+
+    </script>
+<script type="text/javascript" charset="utf-8">
+    HS.beacon.ready(function() {
+      HS.beacon.identify({
+        name: 'Justin',
+        email: 't.justin.calder@gmail.com',
+        'PRO Member': true
+      });
+    });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  });
+</script>
+  <div id="survey-container">
+  <div class="survey-collapse-bar">
+    <a href="#" class="close-survey"></a>
+  </div>
+  <div class="survey-question">
+  </div>
+  <div class="survey-why">
+    <span data-toggle="tooltip" data-placement="top"
+          title="We're working to better personalize the content we write and send to you. The more we know about you and your needs, the better we can serve!">Why are we asking?</span>
+  </div>
+  <ul class="survey-answers">
+  </ul>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"92765cace1","applicationID":"3539411","transactionName":"JldeQUdaDw1WRU4KBxZLX1tGGhAJXEA=","queueTime":6,"applicationTime":287,"ttGuid":"","agentToken":null,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgAAWFRaGwAFV1hWBgA="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,(new Date).getTime(),!0])}catch(s){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(14)(a),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=s(n,"nr@wrapped",function(){return c(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&c.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(14)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(14)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",c)}function i(t){y.push(t),h&&(w=-w,x.data=w)}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(14)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,g),g.prototype=p.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var w=1,x=document.createTextNode(w);new h(a).observe(x,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],c])}f(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],c),l}finally{f(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<n.length;s++)c=n[s],a=t[c],r(a)||(t[c]=e(a,f?c+o:o,i,c))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),c=a.length,s=0;s<c;s++)a[s].apply(i,r);var u=f[v[n]];return u&&u.push([y,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){s(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},y={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return y}function i(){return new r}var a="nr@context",c=t("gos"),s=t(12),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!w++){var t=g.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(v,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;g.proto=n?"https://":"http://",c("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=g.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){c("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var c=t("handle"),s=t(12),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(9);var m=""+location,v={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},y=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:a(),origin:m,features:{},xhrWrappable:y};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),c("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader",2,7]);</script>
+
+  <title>Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free @eggheadio</title>
+  <link rel="shortcut icon" href="/favicon.ico?v=2" />
+
+  <link rel="apple-touch-icon" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-57x57-f2237b6c7d043c56b887178fc7d6aa58.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-72x72-849fa4fbea059f853924bf41684eef7f.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-114x114-e7e7594ee2a8bdc39641de944b388e72.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-144x144-8910c2294eab00b4ca5769d2c0e6b3ea.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-60x60-f13f194d784242cf7acbce5f2d3c216c.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-120x120-2de8da13b42db7df9a7b753390ceabc0.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-76x76-4eeb7c262c977c89d1d43e93463c18a1.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="//d1xwtr0qwr70yv.cloudfront.net/assets/apple-touch-icon-152x152-ae1d4a7323a1c5ecd9d970e36a4b91ec.png" />
+  <meta name="application-name" content="egghead.io"/>
+  <meta name="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <script src="//d1xwtr0qwr70yv.cloudfront.net/assets/application-3a8471caec9df5c6a1aa9f7ba70f7790.js"></script>
+  <!--<script src="//cdn.optimizely.com/js/857661637.js"></script>-->
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="B6W6aXj1MKKEUoYkp38NbmIJW8qIZvTZS1utILDIkMw=" name="csrf-token" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta property="og:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." >
+  <meta property="og:image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png" >
+  <meta property="og:title" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial #free" >
+
+  <meta property="og:type" content="website" >
+  <link href="/feed" rel="alternate" title="RSS" type="application/rss+xml" />
+
+  <link href="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" rel="canonical" />
+
+      <meta name="twitter:card" content="product">
+
+<meta name="twitter:site" content="@eggheadio" />
+<meta name="twitter:creator" content="@@nodebotanist">
+<meta name="twitter:title" content="node Lesson: Creating JWTs (JSON Web Tokens) in Node" />
+<meta name="twitter:url" content="https://egghead.io/lessons/misc-creating-jwts-json-web-tokens-in-node" />
+<meta name="twitter:description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger." />
+<meta name="twitter:image" content="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-introduction-to-json-web-tokens/egghead-introduction-to-json-web-tokens.jpg" />
+
+  <script language="javascript" type="text/javascript">
+    try {
+      var raw_playlists = "{\"playlists\":[{\"id\":13287,\"title\":\"Watch Later\",\"description\":null,\"slug\":\"watch-later-dd4e55947955f2c8\",\"published\":null,\"updated_at\":\"2016-01-04T16:56:38.450-06:00\",\"created_at\":\"2015-07-17T01:05:47.249-05:00\",\"technology_id\":null,\"playlist_url\":\"https://egghead.io/api/v1/playlists/watch-later-dd4e55947955f2c8\",\"is_watch_later\":true,\"playlist_http_url\":\"https://egghead.io/playlists/watch-later-dd4e55947955f2c8\",\"new_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/new\",\"edit_playlist_url\":\"https://egghead.io/api/v1/users/46992/playlists/watch-later-dd4e55947955f2c8\",\"lessons\":[{\"id\":175}]}]}";
+      window.playlists = JSON.parse(raw_playlists).playlists;
+    } catch (e) {
+
+    }
+  </script>
+
+
+
+  <link href="//d1xwtr0qwr70yv.cloudfront.net/assets/application-fc198c8dabe3a741caa3f60504324171.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 8]>
+    <link href="//d1xwtr0qwr70yv.cloudfront.net/stylesheets/font-awesome-ie7.min.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+  <!--Typekit-->
+  <script type="text/javascript" src="//use.typekit.net/vdt8itv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+
+
+  <script>
+
+    window.docCookies = {
+      getItem: function (sKey) {
+        if (!sKey) { return null; }
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+      },
+      setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+        var sExpires = "";
+        if (vEnd) {
+          switch (vEnd.constructor) {
+            case Number:
+              sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+              break;
+            case String:
+              sExpires = "; expires=" + vEnd;
+              break;
+            case Date:
+              sExpires = "; expires=" + vEnd.toUTCString();
+              break;
+          }
+        }
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+        return true;
+      },
+      removeItem: function (sKey, sPath, sDomain) {
+        if (!this.hasItem(sKey)) { return false; }
+        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+        return true;
+      },
+      hasItem: function (sKey) {
+        if (!sKey) { return false; }
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+      },
+      keys: function () {
+        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+        return aKeys;
+      }
+    };
+
+     window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+
+    window.identify = function() {
+      $.get('/current_user').then(function(options) {
+        if(options.id) {
+          analytics.identify(options.id, options);
+          if(mixpanel) {
+            mixpanel.identify(options.email);
+            mixpanel.people.set(_.merge({}, options, {
+              "$first_name": options.name,
+              "$created": options.created_at,
+              "$email": options.email
+            }));
+          }
+        } else {
+          analytics.identify();
+        }
+      });
+    }
+  </script>
+
+  <!-- Start Visual Website Optimizer Asynchronous Code -->
+  <script type='text/javascript'>
+    var _vwo_code=(function(){
+      var account_id=48528,
+          settings_tolerance=2000,
+          library_tolerance=2500,
+          use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+          f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+  </script>
+  <!-- End Visual Website Optimizer Asynchronous Code -->
+</head>
+
+<body itemscope itemtype="http://schema.org/Article">
+
+  <meta itemprop="name" content="Creating JWTs (JSON Web Tokens) in Node - node Video Tutorial"/>
+  <meta itemprop="description" content="In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.">
+  <meta itemprop="image" content="https://d1xwtr0qwr70yv.cloudfront.net/text/node.png">
+
+  <header>
+  <nav role="navigation" class="navbar header-navigation-holder">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button data-target="#header-navigation" data-toggle="collapse" class="navbar-toggle header-navigation-toggle"
+                type="button">
+          <i class="icon-reorder"></i>
+        </button>
+        <a href="/" class="navbar-brand logo">
+          <img alt="Logo with text" class="img-responsive hidden-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-with-text-eb7046b6c5f1e2078fe6e036a790f9c4.svg" />
+          <img alt="Logo mobile" class="img-responsive hidden-xs visible-sm" src="//d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-mobile-316af2740086b0efd4e28d41a3669015.svg" />
+        </a>
+      </div>
+
+      <div id="header-navigation" class="collapse navbar-collapse header-navigation">
+        <ul class="nav navbar-nav header-navigation-list">
+
+          <li class=""><a href="/lessons">Browse</a></li>
+          <li class=""><a href="/courses">Courses</a></li>
+          <li class=""><a href="/playlists">Playlists</a></li>
+
+
+
+          <li class=""><a href="/angularjs-enterprise-training-workshop">On-Site Training</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right header-navigation-list">
+
+
+
+
+
+
+
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Justin  <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+
+                <li><a href="/users/46992">User</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li class="divider"></li>
+                <li><a href="/watch_later">Watch Later</a></li>
+                <li class="divider"></li>
+                <li><a class="btn-nav btn-nav-secondary" data-method="delete" href="/users/sign_out" rel="nofollow">Logout</a></li>
+              </ul>
+
+            </li>
+          <li class="hidden-xs full-height">
+
+              <a href="/membership" class="custom-label custom-label-red"><strong>PRO</strong></a>
+              <a href="/users/46992" class="userpic-holder">
+                <img alt="Justin" class="userpic" height="30" src="https://secure.gravatar.com/avatar/cc8020c4168ef3b05aa1d191d2b5a232?default=identicon&secure=true&size=30" width="30" />
+              </a>
+
+            </li>
+              <li class="half-height egghead-search-input-container">
+               <div data-react-class="EggheadSearchComponent" data-react-props="{}"></div>
+            </li>
+
+        </ul>
+      </div>
+      <!--header-navigation-->
+    </div>
+    <!--container-fluid-->
+  </nav>
+  <!-- header-navigation-holder -->
+</header>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+//    window.identify();
+
+
+  })
+</script>
+
+
+<div ng-app="egghead-lesson" ng-controller="AppCtrl as app">
+<div  ng-controller="LessonViewCtrl">
+
+
+<section class="hero" >
+  <div class="lesson-video-container"  ng-controller="PlaylistCtrl as playlist">
+    <div ng-cloak>
+      <div class="lesson-with-playlist-holder">
+        <div ng-class="{'lesson-frame-column': !playlist.theaterMode, 'lesson-frame-column-theater': playlist.theaterMode}">
+          <div class="lessons-frame-holder">
+      <script>
+        window.docCookies.setItem('egghead-optin', 0, undefined, '/');
+      </script>
+  <div class="lessons-frame">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+<div id="wistia_79gl8k554u" class="wistia_embed" style="width:100%;height:100%;"><div itemprop="video" itemscope itemtype="http://schema.org/VideoObject"><meta itemprop="name" content="egghead-introduction-to-json-web-tokens.mp4" /><meta itemprop="duration" content="PT4M53S" /><meta itemprop="thumbnailUrl" content="https://embed-ssl.wistia.com/deliveries/6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin" /><meta itemprop="contentURL" content="http://embed.wistia.com/deliveries/2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="embedURL" content="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27&controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" /><meta itemprop="uploadDate" content="2016-06-28T16:02:54Z" /><object id="wistia_79gl8k554u_seo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="display:block;height:720px;position:relative;width:1280px;"><param name="movie" value="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27"></param><param name="allowfullscreen" value="true"></param><param name="bgcolor" value="#000000"></param><param name="wmode" value="opaque"></param><param name="flashvars" value="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin"></param><embed src="https://embed-ssl.wistia.com/flash/embed_player_v2.0.swf?2015-02-27" allowfullscreen="true" bgcolor=#000000 flashvars="controlsVisibleOnLoad=true&customColor=7b796a&fullscreenDisabled=true&hdUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin&mediaDuration=293.719&showVolume=true&stillUrl=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F6e49aad035536fa0d0599cba2464e5f85cc64bb6.bin%3Fimage_crop_resized%3D1280x720&unbufferedSeek=true&videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F2ad5b737c3fc8c604487b4182a2962a673a90ce8.bin" name="wistia_79gl8k554u_html" style="display:block;height:100%;position:relative;width:100%;" type="application/x-shockwave-flash" wmode="opaque"></embed></object><noscript itemprop="description">egghead-introduction-to-json-web-tokens.mp4</noscript></div></div>
+</div></div>
+<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js"></script>
+<script>
+wistiaEmbed = Wistia.embed("79gl8k554u", {
+  videoFoam: true,
+  playerPreference: "html5"
+});
+</script>
+<script charset="ISO-8859-1" src="//fast.wistia.com/embed/medias/79gl8k554u/metadata.js"></script>
+
+
+  </div>
+</div><!-- lessons-frame-holder -->
+          
+<div class="lesson-action-holder" ng-cloak>
+  <div class="buttons-holder" ng-controller="DownloadTrackerController">
+    <div class="lesson-controls-container">
+
+      <a id="playbackSpeed"
+         class="custom-btn square-btn-grey replay-speed-btn hidden-xs"
+         ng-click="speedChange.cycleSpeed()"
+         ng-controller="SpeedChangeController as speedChange">
+        <i class="icon-double-angle-right"></i>
+        {{speedChange.playbackSpeed}}x
+      </a>
+      <a id="c6d6979f0c7f66"
+         class="custom-btn"
+         ng-click="onDownload(969,293, $event)">
+        <i class="fa fa-download"></i>
+        <span class="hidden-xs">
+          Download <span class="hidden-md">in HD</span>
+        </span>
+      </a>
+
+      <a id="c6d6979f0c7f66z"></a>
+
+
+
+        <span ng-non-bindable>
+          <div class="AddToLesson" data-react-class="AddToLesson" data-react-props="{&quot;lesson_id&quot;:969,&quot;watch_later_id&quot;:13287}"></div>
+        </span>
+
+
+        <a id="quick-rewind"
+           class="custom-btn"
+           ng-click="rewind(10)">
+          <i class="fa fa-angle-double-left"></i>
+        <span class="hidden-xs">
+          10s
+        </span>
+        </a>
+        <a id="quick-skip"
+           class="custom-btn"
+           ng-click="skip(25)">
+          <i class="fa fa-angle-double-right"></i>
+        <span class="hidden-xs">
+          25s
+        </span>
+        </a>
+
+    </div>
+    <!--<a class="custom-btn custom-btn-blue custom-btn-secondary" href="#">Add to Playlist...</a>-->
+    <!--<br class="visible-xs">-->
+
+    <div class="lesson-like-container">
+      <span>
+        <a ng-click="playlist.toggleTheaterMode()" class="hidden-sm hidden-xs toggle-theater-mode-btn"><i class="fa" ng-class="{'fa-expand': !playlist.theaterMode, 'fa-compress': playlist.theaterMode}"></i></a>
+        <span class="like-description hidden-md">LIKE</span>
+        <a id="lesson-like" class="lesson-like-btn "><i class="icon-thumbs-up"></i></a>
+        <a id="lesson-dislike" class="lesson-like-btn "><i class="icon-thumbs-down icon-flip-horizontal"></i></a>
+      </span>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        $('#lesson-like').click(function(event) {
+          track('clicked like', {
+            category: 'content',
+            'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+              'instructor': 'Kassandra Perch' 
+        });
+      });
+      $('#lesson-dislike').click(function(event) {
+        track('clicked unlike', {
+          category: 'content',
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' 
+      });
+      });
+
+
+
+      $('#lesson-favorite').click(function(event) {
+        track('clicked favorite', {
+          'lesson': 'Creating JWTs (JSON Web Tokens) in Node' ,
+            'instructor': 'Kassandra Perch' ,
+          category: 'content'
+      });
+      });
+      });
+      $(function() {
+        window.regit("c6d6979f0c7f66", "misc-creating-jwts-json-web-tokens-in-node");
+      })
+
+    </script>
+  </div><!-- buttons-holder --><!-- end DownloadTrackerController -->
+
+</div>
+        </div><!-- lesson-frame-column -->
+
+        <div data-react-class="NextUpLessonList" data-react-props="{&quot;lesson_slug&quot;:&quot;misc-creating-jwts-json-web-tokens-in-node&quot;,&quot;playlist_slug&quot;:null,&quot;series_slug&quot;:null,&quot;not_pro&quot;:false}"></div>
+      </div><!-- lesson-with-playlist-holder -->
+    </div>
+  </div><!-- container -->
+</section>
+
+
+
+
+
+<section ng-hide="app.isBlocked()" ng-cloak class="section section-lesson">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 part-left">
+        <div class="lesson-description-holder">
+
+          <h3>
+            <i id="completed-icon" class="icon-check complete pointer" style="display: none"></i>
+            <i id="uncompleted-icon" class="icon-check-empty not-completed pointer" style="display: none"></i>
+            Creating JWTs (JSON Web Tokens) in Node
+          </h3>
+
+          <script type="text/javascript" charset="utf-8">
+            $(function() {
+              var completed = $('#completed-icon'),
+                  uncompleted = $('#uncompleted-icon');
+
+              completed.hide();
+              uncompleted.show();
+
+              completed.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_uncomplete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+              uncompleted.click(function() {
+                completed.toggle();
+                uncompleted.toggle();
+                $.ajax({
+                  type: "POST",
+                  url: '/watch/manual_complete',
+                  data: {
+                    lesson_view: {
+                      lesson_id: 969
+                    }
+                  },
+                  dataType: "json"
+                })
+              });
+
+            });
+          </script>
+
+          <div class="info-line">
+            <small class="duration"><i class="icon-time"></i> 4:53</small>
+            <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/node">Node.js</a></small>
+            <small> lesson by <a class="underlined" href="/instructors/kassandra-perch" rel="author">Kassandra Perch</a></small>
+          </div>
+          
+          
+
+          <div ng-non-bindable class="description-text-holder">
+          <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger.</p>
+
+          </div>
+            <div  ng-controller="LessonFlagController as lessonFlag">
+              <div class="info-line text-right">
+                <small class="update-date">last updated: 2016/06/30</small>
+                <a href="#" id="revision-form-trigger" ng-class="{collapsed: !lessonFlag.current}" data-toggle="collapse" data-target="#revision-form-collapse" aria-expanded="false" aria-controls="revision-form-collapse"><i class="icon-flag"></i></a>
+              </div>
+              <div id="revision-form-collapse" class="collapse">
+                <div class="colored-box grey with-gap">
+                  <div class="col-xs-12">
+  <form ng-submit="lessonFlag.saveFlag()" name="lessonFlagForm">
+    <h3 class="text-center" ng-if="!lessonFlag.submitted">Flag this Lesson for Revision</h3>
+    <h3 class="text-center text-success"  ng-if="lessonFlag.submitted">{{lessonFlag.submittedText}}</h3>
+
+    <div class="revision-form-holder">
+      <div class="media-left part part-left">
+        <h5>What's wrong with this lesson?</h5>
+        <div class="questions-holder">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="outOfDate" ng-model="lessonFlag.issues.outOfDate" ng-required="lessonFlag.reasonSelected()"> Library out of date
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="notClear" ng-model="lessonFlag.issues.notClear" ng-required="lessonFlag.reasonSelected()"> Doesn't make sense
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="audioIssues" ng-model="lessonFlag.issues.audioIssues" ng-required="lessonFlag.reasonSelected()"> Audio problems
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="codeErrors" ng-model="lessonFlag.issues.codeErrors" ng-required="lessonFlag.reasonSelected()"> Code errors
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="willSpecify" ng-model="lessonFlag.issues.willSpecify" ng-required="lessonFlag.reasonSelected()"> Other (please add to notes)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h5>How bad is the problem?</h5>
+          <select class="chosen-select" ng-model="lessonFlag.severity" chosen ng-options="item for item in lessonFlag.severityValues">
+          </select>
+        </div>
+      </div>
+      <div class="media-body part part-right">
+        <h5>Your notes</h5>
+        <div class="notes-textarea-holder">
+          <textarea rows="5" class="form-control" ng-model="lessonFlag.notes"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-holder">
+      <button type="submit" class="custom-btn custom-btn-blue custom-btn-secondary pull-right" ng-class="{disabled: lessonFlag.submitting || lessonFlagForm.$invalid}" ng-disabled="lessonFlag.submitting || lessonFlagForm.$invalid">
+        Send Feedback
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $('.chosen-select').chosen({
+    disable_search_threshold: 10,
+    placeholder_text_single: ' '
+  });
+</script>
+                </div>
+              </div>
+            </div>
+
+
+          <div class="share-lesson-holder">
+              <ul class="social-likes">
+                <li><small>Share this lesson:</small></li>
+                <li class="facebook" title="Share link on Facebook">Facebook</li>
+                <li class="twitter" title="Share link on Twitter">Twitter</li>
+                <li class="plusone" title="Share link on Google+">Google+</li>
+              </ul>
+          </div><!-- share-lesson-holder -->
+        </div><!-- lesson-description-holder -->
+
+          <div class="tabs-holder ">
+  <ul class="nav nav-tabs sticky" role="tablist">
+
+      <li class="active"><a href="#tab-discuss" role="tab" data-toggle="tab" >
+        <small>Discuss</small>
+      </a></li>
+
+      <li><a href="#tab-transcript" role="tab" data-toggle="tab">
+        <small>Transcript</small>
+      </a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+
+
+      <div class="comments tab-pane ng-non-bindable active" id="tab-discuss">
+        <div id='topic' class='unlocked'>
+  <br/>
+  
+
+  
+
+
+<div id="guidelinesModal" class="modal fade" tabindex='-1'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Comment Guidelines</h4>
+      </div>
+      <div class="modal-body">
+        <p>Member comments are a way for PRO Members to communicate, interact, and ask questions about a lesson.</p>
+
+
+        <h3>Commenting Guidelines</h3>
+
+        <p>Here are some basic guidelines for commenting on egghead.io.</p>
+
+        <h3>Be on-topic</h3>
+
+        <p>Comments are for discussing a lesson. If you&#39;re having a general issue with the website functionality, please contact <a href="mailto:support@egghead.io" data-uv-trigger>click here</a>. </p>
+
+        <h3>Avoid meta-discussion</h3>
+
+        <p>Is your comment resembles:</p>
+
+        <ul>
+          <li>This was great!</li>
+          <li>This was horrible!</li>
+          <li>I didn&#39;t like this because it didn&#39;t match my skill level.</li>
+          <li>+1</li>
+        </ul>
+
+        <p>It will likely be deleted as &quot;meta&quot;.</p>
+
+        <h3>Code problem?</h3>
+
+        <p>Should be accompanied by code! JSFiddle, Plunker, CodePen, etc all provide a way to share code and discuss it in context.</p>
+
+        <h3>Details and Context</h3>
+
+        <p>Vague question? Vague answer. Any details and context you can provide will lure more interesting answers!</p>
+      </div>
+
+    </div><!-- /.modal-content. -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<p class="pad-bottom text-right"><small><a href="#guidelinesModal" data-toggle="modal" data-keyboard="true" data-target="#guidelinesModal"  >egghead.io comment guidelines</a></small></p>
+    <div class="forum-actions-holder align-left">
+      <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.reply">Reply</span></a>
+        <a data-method="post" href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/subscribe" rel="nofollow"><span class="translation_missing" title="translation missing: en.lessons.comments.forem_post_crud.subscribe">Subscribe</span></a>
+
+  </div>
+
+
+  <div id='posts'>
+    <div id='post_1' class='post odd'>
+
+  <div class="flexbox-row xs-flexbox-column">
+    <div class='post-avatar-holder'>
+      <img alt="Avatar" src="https://secure.gravatar.com/avatar/4102ef776a7173064f3b476c7f77078a?class=avatar&amp;s=100" />
+    </div>
+    <div class='post-content-holder'>
+      <div class="post-details">
+        <span class='username'>
+          egghead.io
+        </span>
+        <span>
+          <a class='post-time' href='/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node#post-4697'>
+            <time datetime="2016-06-30 16:27:42">
+              11 days  ago
+            </time>
+          </a>
+        </span>
+      </div>
+      <div class="post-text">
+        <p>In this lesson we will look at all of the pieces that combine together to create a JWT (j AWT) or JSON Web Token. You will use node to create a JWT, and then verify it in the JWT debugger. </p>
+
+      </div>
+        <div class='forum-actions-holder'>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?reply_to_id=4697">Reply</a>
+              <a href="/forums/lesson-discussion/topics/creating-jwts-json-web-tokens-in-node/posts/new?quote=true&amp;reply_to_id=4697">Quote</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+      </div>
+
+        <div class="tab-pane ng-non-bindable" id="tab-transcript">
+          <div class="well padded white-background">
+            <p>Hello and welcome to our lesson on JSON Web Tokens also known as JWTs. What we&#39;re going to do is create a JWT using the node command line. The way I&#39;m going to do this is by creating each of the three pieces of a JWT -- the header, the payload, and the key -- sign the key, and then show you all how to debug a JWT.</p>
+
+<p>First, let&#39;s start with our header. Our header is a JSON object with two claims. Claims are a fancy word for JSON key value pairs, and the two we&#39;re putting here are typ which stands for type, and alg which stands for algorithm which is what we&#39;ll use to sign the key.</p>
+
+<p>Now that we have our header object, we need to turn it into a base64 encoded string. We&#39;re going to do that by placing it in a buffer with JSON.stringify, our header, and then to string that bugger with base64.</p>
+
+<p>We have our header. What we&#39;re going to do is create our payload. When I talk about claims, I mentioned that there are fancy words for JSON key pairs, but there are several types of claims.</p>
+
+<p>For instance, there are public claims which are registered in the specification in under a registry, there are reserved claims like iat which stands for issued at which are part of the specification, or issuer also part of the specification, and then there&#39;s private claims which are claims you can write yourself. Things like user name.</p>
+
+<p>These can have more than three characters whereas public and reserve tend to have three characters. Now that we have our payload, we&#39;re going to turn it into a base64 encoded string just like we did with the previous one.</p>
+
+<p>Now that we have our header, and our payload, let&#39;s talk about creating the key. There&#39;s a little bit more to creating the key than the other two items. What we need to do is first create our base key which is our header. Can catenate it with a period, can catenate it with our payload.</p>
+
+<p>We need to sign the key. To do that, we&#39;re going to use the crypto library for node. We&#39;re going to create a signature, and it&#39;ll be a crypto.createHmac. The first thing we&#39;re going to pass it is sha256 which is the algorithm we mentioned in the header. The second thing we&#39;re going to pass it is our secret.</p>
+
+<p>This secret should be shared between the server, and whichever parties you want to authenticate the token with because that&#39;s how they&#39;ll know that the identity is verified. Now that we have our signature Hmac, we&#39;re going to update it with our key.</p>
+
+<p>Finally, to create the finalized version of our key, we&#39;re going to digest this signature with the format of base64. We have all of the pieces of our JSON Web token, so let&#39;s assemble it. All the JSON token is, is our header, plus the period, plus the payload, plus another period, plus the signed digested key.</p>
+
+<p>Let&#39;s take a look, and now we&#39;ve got our JSON token. I&#39;m going to copy that, and I&#39;m going to next show you how to debug this JSON Web token using the jwt.io website. This is the jwt.io website. If you scroll down just a little bit, you&#39;ll find the debugger. What we&#39;re going to do is we&#39;re going to paste our newly made JWT into this debugger.</p>
+
+<p>As you can see on the right, it decodes all the base64 encoded information, and shows it here in the header, and payload. It talks a little bit about our signature. However, as you can see, it says invalid signature. That&#39;s because the secret here is not the secret we used to sign our key.</p>
+
+<p>I&#39;m going to change it, and as you can see, it now says signature verified. That&#39;s how you make sure that the JWTs that are sent to your server are from who they say they are, is by verifying that the key was signed in the correct way.</p>
+
+<p>You can also sign keys asymmetrically with RSA 56 public private key pairs. To learn even more about JWTs, I highly recommend the jwt.io website. We have a lot of information there, and you can definitely read it a little more easily than the specification. Though I would definitely recommend reading RFC 7519 to learn more.</p>
+
+<p>Thanks for listening.</p>
+
+          </div>
+        </div>
+
+
+  </div> <!-- tabs-content -->
+</div><!-- tabs-holder -->
+
+      </div><!-- part-left -->
+
+      <div class="col-sm-12 col-md-4 part-right">
+
+        <!-- Featured Series -->
+        <div class="explore-series-holder">
+          <p><i>Featured course:</i></p>
+
+          <h4><a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications">Using Webpack for Production JavaScript Applications</a></h4>
+          <a href="https://egghead.io/courses/using-webpack-for-production-javascript-applications"><img class="img-responsive" src="https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/054/half/EGH_Webpack-Final-cover.png?1466197336" alt="Using Webpack for Production JavaScript Applications"/></a>
+
+        </div><!-- explore-series-holder -->
+        <br/>
+
+
+        
+        <div class="colored-box light-blue banner-holder">
+          <p><small>egghead.io books presents:</small></p>
+          <div class="logos-holder">
+            <span class="img-holder"><img alt="Angularjs" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/angularjs-bb8c730bb5b75b4d49ed14cc6318eb6d.svg" /></span>
+            <span class="img-holder"><img alt="Grunt" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/grunt-d7eb24a2e4a9822dd89a1e775bfe4c7a.svg" /></span>
+            <span class="img-holder"><img alt="Logo notext" src="//d1xwtr0qwr70yv.cloudfront.net/assets/logo-notext-14d700165716440ad5383594303e29bc.svg" /></span>
+
+          </div><!-- logos-holder -->
+
+          <p><strong>Stop wasting time. Start your AngularJS project with proper automation.</strong></p>
+
+            <a href="/essential-angularjs-grunt-build?d=urpro" class="underlined link-with-arrow"><small>Learn more about the book</small></a>
+
+        </div>
+      </div><!-- part-right -->
+    </div>
+  </div>
+</section>
+
+
+<script type="text/javascript" charset="utf-8">
+  //set the lesson id for angular to access
+  window.lesson_id = 969;
+  window.lesson_slug = 'misc-creating-jwts-json-web-tokens-in-node';
+  window.tech_name = 'node';
+  window.old_technology = 'Misc';
+  window.instructor = 'Kassandra Perch';
+  window.shouldBlock = false;
+</script>
+
+</div>
+</div>
+
+
+<script src="//d1xwtr0qwr70yv.cloudfront.net/assets/lessons-757f4db39d0515b19b7832c682f97b6c.js"></script>
+
+<!-- end redux -->
+
+
+
+
+
+
+
+
+
+
+
+      <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 footer-part-left">
+          <ul class="list-unstyled">
+            <li><a href="/stories">egghead Success Stories</a></li>
+            <li><a href="/instructors">instructors</a></li>
+          </ul>
+          <br/>
+          <div class="div terms-conditions-holder">
+            &copy; egghead.io
+            <br>
+            <a href="/privacy">Terms and Conditions &amp; Privacy Policy</a>
+          </div>
+          <!-- terms-conditions-holder -->
+
+          <div class="social-holder">
+            <a href="https://twitter.com/eggheadio" class="icon-twitter"></a>
+            <a href="https://www.facebook.com/eggheadio" class="icon-facebook"></a>
+            <a href="https://plus.google.com/+EggheadIo" rel="publisher" class="icon-google-plus"></a>
+          </div>
+          <!-- social-holder -->
+        </div>
+        <!-- footer-part-left -->
+
+        <div class="col-md-4 footer-part-right">
+          <h4 class="title">Search Lessons</h4>
+
+          <div data-react-class="AutocompleteInput" data-react-props="{}"></div>
+        </div>
+        <!-- footer-part-right -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </footer>
+
+
+  <script type="text/javascript" charset="utf-8">
+      page_data = {}
+
+  window.egh_page = {
+    type: 'viewed lesson', data: _.merge({}, page_data, {
+      lesson: 'misc-creating-jwts-json-web-tokens-in-node',
+      duration: 293,
+      instructor: 'Kassandra Perch',
+      technology: 'node'
+    })
+  };
+
+  </script>
+
+
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0381c6718931891195787019e4835879");</script><!-- end Mixpanel -->
+
+
+
+  <script type="text/javascript">
+    window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+        window.analytics.load('blfa6tadx3');
+    window.analytics.ready(window.identify);
+
+    window.analytics.page();
+  </script>
+
+
+  <!-- Drip -->
+  <script type="text/javascript">
+    var _dcq = _dcq || [];
+    var _dcs = _dcs || {};
+    _dcs.account = '9429362';
+
+    (function() {
+      var dc = document.createElement('script');
+      dc.type = 'text/javascript'; dc.async = true;
+      dc.src = '//tag.getdrip.com/9429362.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(dc, s);
+    })();
+  </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1628664980699314');
+      fbq('track', "PageView");
+        fbq('trackCustom', "PageViewSubscriber");
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1628664980699314&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>!function(e,o,n){window.HSCW=o,window.HS=n,n.beacon=n.beacon||{};var t=n.beacon;t.userConfig={},t.readyQueue=[],t.config=function(e){this.userConfig=e},t.ready=function(e){this.readyQueue.push(e)},o.config={docs:{enabled:!0,baseUrl:"//egghead.helpscoutdocs.com/"},contact:{enabled:!0,formId:"967282e1-37fd-11e6-aae8-0a7d6919297d"}};var r=e.getElementsByTagName("script")[0],c=e.createElement("script");c.type="text/javascript",c.async=!0,c.src="https://djtflbt20bdde.cloudfront.net/",r.parentNode.insertBefore(c,r)}(document,window.HSCW||{},window.HS||{});</script>
+    <script type="text/javascript" charset="utf-8">
+      HS.beacon.config({
+        color: '#555555',
+        icon: 'message',
+        instructions: 'Questions related to lessons should be added as comments on the lesson itself.',
+        poweredBy: false
+      });
+
+    </script>
+<script type="text/javascript" charset="utf-8">
+    HS.beacon.ready(function() {
+      HS.beacon.identify({
+        name: 'Justin',
+        email: 't.justin.calder@gmail.com',
+        'PRO Member': true
+      });
+    });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  });
+</script>
+  <div id="survey-container">
+  <div class="survey-collapse-bar">
+    <a href="#" class="close-survey"></a>
+  </div>
+  <div class="survey-question">
+  </div>
+  <div class="survey-why">
+    <span data-toggle="tooltip" data-placement="top"
+          title="We're working to better personalize the content we write and send to you. The more we know about you and your needs, the better we can serve!">Why are we asking?</span>
+  </div>
+  <ul class="survey-answers">
+  </ul>
+</div>
+</body>
+</html>
