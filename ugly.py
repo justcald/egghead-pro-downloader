@@ -4,26 +4,18 @@ import requests
 import os
 from lxml import html
 from sys import argv
+from credentials import *
 
 s = requests.Session()
 bin_list = []
-headers = {
-    'Cookie': ''
-}
 os.popen('mkdir videos/{}'.format(argv[1]))
 
 
 def login():
-    DATA = {
-        'user[email]': '',
-        'user[password]': '',
-        'authenticity_token': '',
-    }
     r = s.post('https://egghead.io/users/sign_in', data=DATA, headers=headers)
 
 
 def parse_bin(content, key):
-    print(key)
     try:
         file = content.split(key)[1].split('" />')[0]
         bin_list.append('{}{}'.format(key, file))
@@ -40,22 +32,23 @@ def build_list():
     for item in range(0, len(items)):
         for i in items[item].items():
             if 'https://egg' in i[1]:
+                course_name = i[1].split('lessons/')[1]
                 t = s.get(i[1])
                 try:
                     file = t.text.split(WISTIA)[1].split('" />')[0]
-                    bin_list.append('{}{}'.format(WISTIA, file))
+                    bin_key = '{}{}'.format(WISTIA, file)
+                    download_bin(bin_key, course_name)
                 except IndexError:
                     ssl_bin = t.text.split(SSL_WISTIA)[1].split('" />')[0]
-                    bin_list.append('{}{}'.format(SSL_WISTIA, ssl_bin))
-                    print('WE BROKE')
+                    bin_key = '{}{}'.format(SSL_WISTIA, ssl_bin)
+                    download_bin(bin_key, course_name)
                     print(i)
                     item += 1
-    download_list()
 
 
-def download_bin(bin):
+def download_bin(bin, course_name):
     file_name = bin.split('.bin')[0].split('deliveries/')[1]
-    video = open('videos/{}/{}.mp4'.format(argv[1], file_name), 'wb')
+    video = open('videos/{}/{}.mp4'.format(argv[1], course_name), 'wb')
     resp = requests.get(bin, stream=True)
 
     if not resp.ok:
@@ -65,6 +58,6 @@ def download_bin(bin):
         video.write(data)
 
 
-def download_list():
+def download_list(course_name):
     for bin in bin_list:
-        download_bin(bin)
+        download_bin(bin, course_name)
