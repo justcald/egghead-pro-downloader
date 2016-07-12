@@ -13,8 +13,6 @@ EGGHEAD = 'https://egghead.io/'
 
 
 def login():
-    global page
-    page = 1
     r = s.post('https://egghead.io/users/sign_in', data=DATA, headers=headers)
 
 
@@ -27,17 +25,18 @@ def parse_bin(content, key):
 
 
 def build_list():
-    global page
     SSL_WISTIA = 'https://embed-ssl.wistia.com/deliveries/'
     WISTIA = 'http://embed.wistia.com/deliveries/'
-
+    cur_page = 1
     tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
-                                                             argv[1], page)
+                                                             argv[1], cur_page)
     r = s.get(tech_url)
     page_amount = r.text.split('<p class="subtitle"><i>showing All ')[
         1].split(' ')[0]
     total_pages = int(page_amount) / 50
-    for page in range(0, total_pages):
+    if total_pages == 0:
+        total_pages = 1
+    for page in range(1, total_pages + 1):
         tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
                                                                  argv[1], page)
         r = s.get(tech_url)
