@@ -28,17 +28,15 @@ def build_list():
     SSL_WISTIA = 'https://embed-ssl.wistia.com/deliveries/'
     WISTIA = 'http://embed.wistia.com/deliveries/'
     cur_page = 1
-    tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
-                                                             argv[1], cur_page)
+    tech_url = '{}courses/{}'.format(EGGHEAD, argv[1])
     r = s.get(tech_url)
     page_amount = r.text.split('<p class="subtitle"><i>showing All ')[
         1].split(' ')[0]
     total_pages = int(page_amount) / 50
     if total_pages == 0:
         total_pages = 1
-    for page in range(1, total_pages + 1):
-        tech_url = '{}technologies/{}?order=desc&page={}'.format(EGGHEAD,
-                                                                 argv[1], page)
+    for page in range(1, int(total_pages) + 1):
+        tech_url = '{}courses/{}'.format(EGGHEAD, argv[1])
         r = s.get(tech_url)
         tree = html.fromstring(r.text)
         items = tree.xpath('//a[@class=""]')
